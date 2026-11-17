@@ -67,14 +67,17 @@ create table if not exists quotations (
 );
 
 create table if not exists quotation_items (
-  id            uuid primary key default gen_random_uuid(),
-  quotation_id  uuid not null references quotations(id) on delete cascade,
-  description   text not null,
-  quantity      numeric(10,2) not null default 1,
-  unit          text not null default 'NOS',
-  unit_price    numeric(15,2) not null default 0,
-  total         numeric(15,2) not null default 0,
-  sort_order    int not null default 0
+  id             uuid primary key default gen_random_uuid(),
+  quotation_id   uuid not null references quotations(id) on delete cascade,
+  description    text not null,
+  quantity       numeric(10,2) not null default 1,
+  unit           text not null default 'NOS',
+  unit_price     numeric(15,2) not null default 0,
+  discount       numeric(15,2) not null default 0,
+  taxable_amount numeric(15,2) not null default 0,
+  vat_amount     numeric(15,2) not null default 0,
+  total          numeric(15,2) not null default 0,
+  sort_order     int not null default 0
 );
 
 -- ── INVOICES ─────────────────────────────────────────────────
@@ -111,14 +114,17 @@ create table if not exists invoices (
 );
 
 create table if not exists invoice_items (
-  id           uuid primary key default gen_random_uuid(),
-  invoice_id   uuid not null references invoices(id) on delete cascade,
-  description  text not null,
-  quantity     numeric(10,2) not null default 1,
-  unit         text not null default 'NOS',
-  unit_price   numeric(15,2) not null default 0,
-  total        numeric(15,2) not null default 0,
-  sort_order   int not null default 0
+  id             uuid primary key default gen_random_uuid(),
+  invoice_id     uuid not null references invoices(id) on delete cascade,
+  description    text not null,
+  quantity       numeric(10,2) not null default 1,
+  unit           text not null default 'NOS',
+  unit_price     numeric(15,2) not null default 0,
+  discount       numeric(15,2) not null default 0,
+  taxable_amount numeric(15,2) not null default 0,
+  vat_amount     numeric(15,2) not null default 0,
+  total          numeric(15,2) not null default 0,
+  sort_order     int not null default 0
 );
 
 -- ── PURCHASE ORDERS ──────────────────────────────────────────
@@ -160,6 +166,9 @@ create table if not exists purchase_order_items (
   quantity          numeric(10,2) not null default 1,
   unit              text not null default 'NOS',
   unit_price        numeric(15,2) not null default 0,
+  discount          numeric(15,2) not null default 0,
+  taxable_amount    numeric(15,2) not null default 0,
+  vat_amount        numeric(15,2) not null default 0,
   total             numeric(15,2) not null default 0,
   sort_order        int not null default 0
 );

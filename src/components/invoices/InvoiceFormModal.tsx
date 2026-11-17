@@ -366,7 +366,7 @@ export function InvoiceFormModal({
     <EnterpriseWorkspace open={open} onClose={() => onOpenChange(false)}>
       <WorkspaceHeader
         title={isEditing ? "Edit Tax Invoice" : "Create Commercial Tax Invoice"}
-        subtitle="LATIFAL STAR TECHNICAL SERVICES â€¢ UAE VAT Commercial Invoicing"
+        subtitle="LATIFAL STAR TECHNICAL SERVICES • UAE VAT Commercial Invoicing"
         documentNumber={formData.invoiceNumber}
         onClose={() => onOpenChange(false)}
         actions={

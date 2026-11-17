@@ -449,7 +449,7 @@ export function WorkCompletionFormModal({
     <EnterpriseWorkspace open={open} onClose={() => onOpenChange(false)}>
       <WorkspaceHeader
         title={isEditing ? "Edit Work Completion Report" : "Create Work Completion Report (WCR)"}
-        subtitle="LATIFAL STAR TECHNICAL SERVICES â€¢ Site Execution & Handover Sign-Off"
+        subtitle="LATIFAL STAR TECHNICAL SERVICES • Site Execution & Handover Sign-Off"
         documentNumber={formData.reportNumber}
         onClose={() => onOpenChange(false)}
         actions={

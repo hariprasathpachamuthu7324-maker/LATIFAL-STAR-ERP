@@ -60,9 +60,9 @@ export const InvoicesRepository = {
             quantity: Number(item.quantity),
             unit: item.unit,
             unitPrice: Number(item.unit_price),
-            discount: Number(item.discount),
-            taxableAmount: Number(item.taxable_amount),
-            vatAmount: Number(item.vat_amount),
+            discount: Number(item.discount || 0),
+            taxableAmount: Number(item.taxable_amount || item.total || 0),
+            vatAmount: Number(item.vat_amount || 0),
             total: Number(item.total ?? item.total_price ?? 0),
           })),
       }));
@@ -130,7 +130,7 @@ export const InvoicesRepository = {
 
     if (resolvedItems.length > 0) {
       await supabase.from("invoice_items").delete().eq("invoice_id", resolvedId);
-      const { error: itemsErr } = await supabase.from("invoice_items").insert(
+      let { error: itemsErr } = await supabase.from("invoice_items").insert(
         resolvedItems.map((item, index) => ({
           id: item.id,
           invoice_id: resolvedId,
@@ -145,6 +145,24 @@ export const InvoicesRepository = {
           total: item.total,
         }))
       );
+
+      // Fallback if schema does not yet have discount / taxable_amount / vat_amount columns
+      if (itemsErr && (itemsErr.message?.includes("discount") || itemsErr.message?.includes("column") || itemsErr.code === "PGRST204")) {
+        const fallbackRes = await supabase.from("invoice_items").insert(
+          resolvedItems.map((item, index) => ({
+            id: item.id,
+            invoice_id: resolvedId,
+            sort_order: index,
+            description: item.description,
+            quantity: item.quantity,
+            unit: item.unit,
+            unit_price: item.unitPrice,
+            total: item.total,
+          }))
+        );
+        itemsErr = fallbackRes.error;
+      }
+
       if (itemsErr) {
         throw new Error(itemsErr.message || "Failed to persist invoice items");
       }
