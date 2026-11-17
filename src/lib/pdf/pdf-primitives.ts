@@ -24,7 +24,7 @@ export const PDF_COLORS = {
 export const PDF_COMPANY_DETAILS = {
   name: "LATIFAL STAR TECHNICAL SERVICES",
   nameFirst: "LATIFAL STAR",                                     // primary part
-  nameRest: " TECHNICAL SERVICES",                               // secondary part
+  nameRest: "TECHNICAL SERVICES",                                // secondary part
   tagline: "Commercial Electro-Mechanical & Technical Services",
   address: "Deira, Port Saeed, Dubai – United Arab Emirates",
   phone: "+971561574740",
@@ -56,29 +56,30 @@ function getLogoBytes(): Uint8Array {
 }
 
 /**
- * Draw two-tone company name: "LATIFAL STAR" in navy, rest in orange
+ * Draw two-tone company name: "LATIFAL STAR" in navy, rest in royal blue
  */
 function drawTwoToneCompanyName(doc: jsPDF, x: number, y: number, fontSize: number): void {
   const comp = PDF_COMPANY_DETAILS;
   doc.setFont("helvetica", "bold");
   doc.setFontSize(fontSize);
 
+  const starText = comp.nameFirst.trim();
+  const techText = comp.nameRest.trim();
+  const starWidth = doc.getTextWidth(starText);
+  const spaceWidth = doc.getTextWidth(" ");
+
   // "LATIFAL STAR" in navy (blue)
   doc.setTextColor(...PDF_COLORS.primaryNavy);
-  doc.text(comp.nameFirst, x, y);
+  doc.text(starText, x, y);
 
-  // Get width of "LATIFAL STAR" to position rest
-  const navyWidth = doc.getTextWidth(comp.nameFirst);
-
-  // " TECHNICAL SERVICES CO. L.L.C." in orange
+  // "TECHNICAL SERVICES" in royal blue
   doc.setTextColor(...PDF_COLORS.brandOrange);
-  doc.text(comp.nameRest, x + navyWidth, y);
+  doc.text(techText, x + starWidth + spaceWidth, y);
 }
 
 /**
  * 1. HEADER: Official LATIFAL STAR document header
- * Logo (square, not stretched) + two-tone company name + divider + document title
- * showAddressInHeader = true for invoices (shows address/TRN lines)
+ * Logo icon (matched to font height) + two-tone company name + divider + document title
  */
 export function renderOfficialHeader(
   doc: jsPDF,
@@ -90,60 +91,61 @@ export function renderOfficialHeader(
   const comp = { ...PDF_COMPANY_DETAILS, ...companyOverride };
   const pageWidth = doc.internal.pageSize.getWidth();
   const startX = 14;
-  const usableWidth = pageWidth - 28;
 
-  // Logo — square 20x20
-  const logoSize = 20;
-  const logoY = 8;
+  // Header font styling
+  doc.setFont("helvetica", "bold");
+  const fontSize = 16.5;
+  doc.setFontSize(fontSize);
+
+  const starText = comp.nameFirst.trim();
+  const techText = comp.nameRest.trim();
+  const starWidth = doc.getTextWidth(starText);
+  const spaceWidth = doc.getTextWidth(" ");
+
+  // Logo size scaled to match font line height (~8.5 mm)
+  const logoSize = 8.5;
+  const logoSpacing = 4;
+  const textX = startX + logoSize + logoSpacing;
+
+  // Vertical alignment: vertically center logo and text letters
+  const headerCenterY = 17;
+  const capHeight = fontSize * 0.3528 * 0.72; // ~4.2 mm
+  const logoY = headerCenterY - (logoSize / 2);
+  const textY = headerCenterY + (capHeight / 2);
+
+  // Logo — square / circular mark scaled to font height
   try {
     const logoBytes = getLogoBytes();
     const imgData = (logoBytes && logoBytes.length > 0) ? logoBytes : PREEDHAR_LOGO_BASE64;
-    const fmt = PREEDHAR_LOGO_BASE64.startsWith('data:image/png') ? 'PNG' : 'JPEG';
-    doc.addImage(imgData as string, fmt, startX, logoY, logoSize, logoSize, undefined, 'FAST');
+    const fmt = PREEDHAR_LOGO_BASE64.startsWith("data:image/png") ? "PNG" : "JPEG";
+    doc.addImage(imgData as string, fmt, startX, logoY, logoSize, logoSize, undefined, "FAST");
   } catch {
     doc.setFillColor(220, 230, 242);
-    doc.rect(startX, logoY, logoSize, logoSize, 'F');
+    doc.rect(startX, logoY, logoSize, logoSize, "F");
   }
 
-  const textX = startX + logoSize + 5;
-  
-  // Calculate exact font size to fill the remaining width
-  doc.setFont('helvetica', 'bold');
-  const fullText = 'LATIFAL STAR TECHNICAL SERVICES';
-  doc.setFontSize(10);
-  const textWidthAt10 = doc.getTextWidth(fullText);
-  const targetWidth = pageWidth - textX - startX; // fill to the right margin (startX)
-  const optimalSize = (targetWidth / textWidthAt10) * 10;
-  
-  doc.setFontSize(optimalSize);
-  
-  // Vertically align with logo (logo is 20mm tall from Y=8)
-  const textY = logoY + 14; 
-
-  // LATIFAL STAR in navy
+  // LATIFAL STAR in primary navy
   doc.setTextColor(...PDF_COLORS.primaryNavy);
-  doc.text('LATIFAL STAR', textX, textY);
-  const nw = doc.getTextWidth('LATIFAL STAR');
-  
-  // TECHNICAL SERVICES in orange
-  doc.setTextColor(...PDF_COLORS.brandOrange);
-  doc.text(' TECHNICAL SERVICES', textX + nw, textY);
+  doc.text(starText, textX, textY);
 
+  // TECHNICAL SERVICES in royal blue with guaranteed space separation
+  doc.setTextColor(...PDF_COLORS.brandOrange);
+  doc.text(techText, textX + starWidth + spaceWidth, textY);
 
   // Thin navy divider
   doc.setDrawColor(...PDF_COLORS.primaryNavy);
   doc.setLineWidth(0.5);
-  doc.line(0, 32, pageWidth, 32);
+  doc.line(0, 28, pageWidth, 28);
 
   // FULL WIDTH title band — navy background, white bold text
   doc.setFillColor(...PDF_COLORS.primaryNavy);
-  doc.rect(0, 32, pageWidth, 10, 'F');
-  doc.setFont('helvetica', 'bold');
+  doc.rect(0, 28, pageWidth, 10, "F");
+  doc.setFont("helvetica", "bold");
   doc.setFontSize(13);
   doc.setTextColor(255, 255, 255);
-  doc.text(documentTitle.toUpperCase(), pageWidth / 2, 38.5, { align: 'center' });
+  doc.text(documentTitle.toUpperCase(), pageWidth / 2, 34.5, { align: "center" });
 
-  return 45;
+  return 43;
 }
 
 export interface MetadataPair {
