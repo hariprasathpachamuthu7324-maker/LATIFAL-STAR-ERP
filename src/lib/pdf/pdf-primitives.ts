@@ -66,20 +66,20 @@ function drawTwoToneCompanyName(doc: jsPDF, x: number, y: number, fontSize: numb
   const starText = comp.nameFirst.trim();
   const techText = comp.nameRest.trim();
   const starWidth = doc.getTextWidth(starText);
-  const spaceWidth = doc.getTextWidth(" ");
+  const gap = 4.5; // Clear gap between STAR and TECHNICAL (ex: star technical)
 
   // "LATIFAL STAR" in navy (blue)
   doc.setTextColor(...PDF_COLORS.primaryNavy);
   doc.text(starText, x, y);
 
-  // "TECHNICAL SERVICES" in royal blue
+  // "TECHNICAL SERVICES" in royal blue with guaranteed clear gap
   doc.setTextColor(...PDF_COLORS.brandOrange);
-  doc.text(techText, x + starWidth + spaceWidth, y);
+  doc.text(techText, x + starWidth + gap, y);
 }
 
 /**
  * 1. HEADER: Official LATIFAL STAR document header
- * Logo icon (matched to font height) + two-tone company name + divider + document title
+ * Prominent circular logo + two-tone company name with clear gap + divider + document title
  */
 export function renderOfficialHeader(
   doc: jsPDF,
@@ -92,28 +92,28 @@ export function renderOfficialHeader(
   const pageWidth = doc.internal.pageSize.getWidth();
   const startX = 14;
 
+  // Logo settings: prominent, high-res circular emblem
+  const logoSize = 19;
+  const logoY = 7;
+  const logoSpacing = 5;
+  const textX = startX + logoSize + logoSpacing;
+
   // Header font styling
   doc.setFont("helvetica", "bold");
-  const fontSize = 16.5;
+  const fontSize = 17.5;
   doc.setFontSize(fontSize);
 
   const starText = comp.nameFirst.trim();
   const techText = comp.nameRest.trim();
   const starWidth = doc.getTextWidth(starText);
-  const spaceWidth = doc.getTextWidth(" ");
+  const gap = 4.5; // Distinct space between STAR and TECHNICAL (ex: star technical)
 
-  // Logo size scaled to match font line height (~8.5 mm)
-  const logoSize = 8.5;
-  const logoSpacing = 4;
-  const textX = startX + logoSize + logoSpacing;
-
-  // Vertical alignment: vertically center logo and text letters
-  const headerCenterY = 17;
-  const capHeight = fontSize * 0.3528 * 0.72; // ~4.2 mm
-  const logoY = headerCenterY - (logoSize / 2);
+  // Vertical alignment: vertically centered with the circular logo
+  const headerCenterY = logoY + (logoSize / 2);
+  const capHeight = fontSize * 0.3528 * 0.72; // ~4.4 mm
   const textY = headerCenterY + (capHeight / 2);
 
-  // Logo — square / circular mark scaled to font height
+  // Draw Logo
   try {
     const logoBytes = getLogoBytes();
     const imgData = (logoBytes && logoBytes.length > 0) ? logoBytes : PREEDHAR_LOGO_BASE64;
@@ -124,28 +124,30 @@ export function renderOfficialHeader(
     doc.rect(startX, logoY, logoSize, logoSize, "F");
   }
 
-  // LATIFAL STAR in primary navy
+  // "LATIFAL STAR" in primary navy
   doc.setTextColor(...PDF_COLORS.primaryNavy);
   doc.text(starText, textX, textY);
 
-  // TECHNICAL SERVICES in royal blue with guaranteed space separation
+  // "TECHNICAL SERVICES" in royal blue with guaranteed clear gap
   doc.setTextColor(...PDF_COLORS.brandOrange);
-  doc.text(techText, textX + starWidth + spaceWidth, textY);
+  doc.text(techText, textX + starWidth + gap, textY);
 
   // Thin navy divider
+  const dividerY = logoY + logoSize + 3; // 29 mm
   doc.setDrawColor(...PDF_COLORS.primaryNavy);
   doc.setLineWidth(0.5);
-  doc.line(0, 28, pageWidth, 28);
+  doc.line(0, dividerY, pageWidth, dividerY);
 
   // FULL WIDTH title band — navy background, white bold text
+  const titleBandY = dividerY;
   doc.setFillColor(...PDF_COLORS.primaryNavy);
-  doc.rect(0, 28, pageWidth, 10, "F");
+  doc.rect(0, titleBandY, pageWidth, 9.5, "F");
   doc.setFont("helvetica", "bold");
   doc.setFontSize(13);
   doc.setTextColor(255, 255, 255);
-  doc.text(documentTitle.toUpperCase(), pageWidth / 2, 34.5, { align: "center" });
+  doc.text(documentTitle.toUpperCase(), pageWidth / 2, titleBandY + 6.5, { align: "center" });
 
-  return 43;
+  return titleBandY + 9.5 + 4; // ~42.5 mm
 }
 
 export interface MetadataPair {

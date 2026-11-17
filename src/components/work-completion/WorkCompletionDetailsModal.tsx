@@ -139,7 +139,8 @@ export function WorkCompletionDetailsModal({
           <div>
             <h2 className="text-base font-bold tracking-tight">
               <span className="text-[#002664]">LATIFAL STAR</span>
-              <span className="text-[#0052CC]"> TECHNICAL SERVICES</span>
+              {" "}
+              <span className="text-[#0052CC]">TECHNICAL SERVICES</span>
             </h2>
           </div>
         </div>
