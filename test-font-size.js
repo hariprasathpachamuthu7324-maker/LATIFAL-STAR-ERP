@@ -1,0 +1,11 @@
+const { jsPDF } = require("jspdf");
+const doc = new jsPDF();
+doc.setFont("helvetica", "bold");
+doc.setFontSize(10);
+const txt = "PREEDHAR TECHNICAL SERVICES CO. L.L.C.";
+const w = doc.getTextWidth(txt);
+console.log("Width at size 10:", w);
+const targetW = 210 - 39 - 14;
+console.log("Target width:", targetW);
+const optimalSize = (targetW / w) * 10;
+console.log("Optimal font size:", optimalSize);
