@@ -46,7 +46,7 @@ export function CustomerTable({
       header: "Customer ID",
       sortable: true,
       render: (row) => (
-        <span className="font-bold text-[#0B1F33]">{row.customerCode}</span>
+        <span className="font-bold text-[#002664]">{row.customerCode}</span>
       ),
     },
     {

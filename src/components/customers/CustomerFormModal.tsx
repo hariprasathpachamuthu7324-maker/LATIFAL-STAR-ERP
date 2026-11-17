@@ -332,7 +332,7 @@ export function CustomerFormModal({
 
         <WorkspaceSummaryPanel>
           <div className="space-y-4">
-            <h3 className="text-sm font-bold text-[#0B1F33] uppercase tracking-wider border-b border-[#E2E8F0] pb-2">
+            <h3 className="text-sm font-bold text-[#002664] uppercase tracking-wider border-b border-[#E2E8F0] pb-2">
               Entity Context
             </h3>
             

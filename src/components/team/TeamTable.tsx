@@ -54,7 +54,7 @@ export function TeamTable({
         <div className="w-12 h-12 rounded-full bg-[#EFF6FF] border border-[#DBEAFE] flex items-center justify-center text-[#2563EB] mx-auto mb-3">
           <Users className="w-6 h-6" />
         </div>
-        <h3 className="text-sm font-bold text-[#0B1F33]">No Team Members Found</h3>
+        <h3 className="text-sm font-bold text-[#002664]">No Team Members Found</h3>
         <p className="text-xs text-slate-500 max-w-sm mx-auto mt-1">
           No members match your search or filter criteria. Try adjusting your filters or invite a new team member.
         </p>
@@ -91,11 +91,11 @@ export function TeamTable({
                   {/* Member Name + Avatar */}
                   <td className="py-3.5 px-4 whitespace-nowrap">
                     <div className="flex items-center gap-3">
-                      <div className="w-8 h-8 rounded-full bg-[#0B1F33] text-white flex items-center justify-center font-bold text-xs shrink-0 shadow-2xs">
+                      <div className="w-8 h-8 rounded-full bg-[#002664] text-white flex items-center justify-center font-bold text-xs shrink-0 shadow-2xs">
                         {getInitials(member.fullName)}
                       </div>
                       <div>
-                        <div className="font-bold text-slate-900 group-hover:text-[#0B1F33]">
+                        <div className="font-bold text-slate-900 group-hover:text-[#002664]">
                           {member.fullName}
                         </div>
                         <div className="text-[11px] text-slate-500 font-mono">
@@ -145,7 +145,7 @@ export function TeamTable({
                       <Button
                         variant="ghost"
                         size="sm"
-                        className="h-7 w-7 p-0 text-slate-500 hover:text-[#0B1F33]"
+                        className="h-7 w-7 p-0 text-slate-500 hover:text-[#002664]"
                         title="Edit Details"
                         onClick={() => onEdit(member)}
                       >

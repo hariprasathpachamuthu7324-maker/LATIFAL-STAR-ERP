@@ -69,7 +69,7 @@ export function LineItemsEditor({
     <div className="space-y-3">
       <div className="flex items-center justify-between pb-2 border-b border-slate-200">
         <div>
-          <h4 className="text-xs font-bold text-[#0B1F33] uppercase tracking-wider flex items-center gap-1.5">
+          <h4 className="text-xs font-bold text-[#002664] uppercase tracking-wider flex items-center gap-1.5">
             <Layers className="w-3.5 h-3.5 text-[#2563EB]" />
             Scope of Works & Bill of Quantities (BOQ)
           </h4>

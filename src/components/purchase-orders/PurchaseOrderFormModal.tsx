@@ -532,7 +532,7 @@ export function PurchaseOrderFormModal({
 
         <WorkspaceSummaryPanel>
           <div className="space-y-4">
-            <h3 className="text-sm font-bold text-[#0B1F33] uppercase tracking-wider border-b border-[#E2E8F0] pb-2">
+            <h3 className="text-sm font-bold text-[#002664] uppercase tracking-wider border-b border-[#E2E8F0] pb-2">
               Order Summary
             </h3>
             
@@ -568,8 +568,8 @@ export function PurchaseOrderFormModal({
               </div>
 
               <div className="flex justify-between pt-3 border-t border-[#E2E8F0] text-base">
-                <span className="font-bold text-[#0B1F33]">Grand Total:</span>
-                <span className="font-bold text-[#0B1F33] font-numeric">
+                <span className="font-bold text-[#002664]">Grand Total:</span>
+                <span className="font-bold text-[#002664] font-numeric">
                   {formatAED(totals.grandTotal)}
                 </span>
               </div>

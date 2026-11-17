@@ -39,7 +39,7 @@ export function CustomerDetailsModal({
             <div>
               <DialogTitle>{customer.companyName}</DialogTitle>
               <DialogDescription className="mt-0.5">
-                Customer Reference Code: <strong className="text-[#0B1F33]">{customer.customerCode}</strong>
+                Customer Reference Code: <strong className="text-[#002664]">{customer.customerCode}</strong>
               </DialogDescription>
             </div>
             <Badge
@@ -83,7 +83,7 @@ export function CustomerDetailsModal({
 
           {/* Contact Details */}
           <div className="p-4 rounded-lg border border-slate-200/80 bg-white space-y-2">
-            <h4 className="text-xs font-bold text-[#0B1F33] uppercase tracking-wider flex items-center gap-1.5 pb-1 border-b border-slate-100">
+            <h4 className="text-xs font-bold text-[#002664] uppercase tracking-wider flex items-center gap-1.5 pb-1 border-b border-slate-100">
               <User className="w-3.5 h-3.5 text-[#2563EB]" />
               Contact Information
             </h4>
@@ -121,7 +121,7 @@ export function CustomerDetailsModal({
 
           {/* Address & Facility */}
           <div className="p-4 rounded-lg border border-slate-200/80 bg-white space-y-2">
-            <h4 className="text-xs font-bold text-[#0B1F33] uppercase tracking-wider flex items-center gap-1.5 pb-1 border-b border-slate-100">
+            <h4 className="text-xs font-bold text-[#002664] uppercase tracking-wider flex items-center gap-1.5 pb-1 border-b border-slate-100">
               <MapPin className="w-3.5 h-3.5 text-[#2563EB]" />
               Billing & Site Address
             </h4>

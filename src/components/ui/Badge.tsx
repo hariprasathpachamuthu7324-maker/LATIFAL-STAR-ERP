@@ -26,7 +26,7 @@ export function Badge({
   const variantStyles = {
     default: "bg-slate-100 text-slate-700 border-slate-200",
     primary: "bg-slate-900 text-white border-slate-900",
-    navy: "bg-[#F1F5F9] text-[#0B1F33] border-[#CBD5E1]",
+    navy: "bg-[#F1F5F9] text-[#002664] border-[#CBD5E1]",
     success: "bg-[#F0FDF4] text-[#15803D] border-[#BBF7D0]",
     warning: "bg-[#FFFBEB] text-[#B45309] border-[#FDE68A]",
     danger: "bg-[#FEF2F2] text-[#B91C1C] border-[#FECACA]",
@@ -37,7 +37,7 @@ export function Badge({
   const dotColors = {
     default: "bg-slate-400",
     primary: "bg-[#2563EB]",
-    navy: "bg-[#0B1F33]",
+    navy: "bg-[#002664]",
     success: "bg-[#15803D]",
     warning: "bg-[#B45309]",
     danger: "bg-[#B91C1C]",

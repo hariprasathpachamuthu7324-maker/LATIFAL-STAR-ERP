@@ -46,7 +46,7 @@ export function WorkspaceSection({
 }) {
   return (
     <div className={cn("p-5 sm:p-6 rounded-lg border border-[#E2E8F0] bg-white shadow-sm space-y-4", className)}>
-      <h4 className="text-sm font-bold text-[#0B1F33] uppercase tracking-wider flex items-center gap-2 border-b border-[#E2E8F0] pb-2">
+      <h4 className="text-sm font-bold text-[#002664] uppercase tracking-wider flex items-center gap-2 border-b border-[#E2E8F0] pb-2">
         {Icon && <Icon className="w-4 h-4 text-[#2563EB]" />}
         {title}
       </h4>

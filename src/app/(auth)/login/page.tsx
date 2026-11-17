@@ -66,13 +66,13 @@ export default function LoginPage() {
   };
 
   const inputClass =
-    "w-full h-11 pl-10 pr-4 text-sm bg-slate-50 border border-slate-200 rounded-lg text-[#0F172A] placeholder:text-slate-400 transition-all duration-150 focus:outline-none focus:bg-white focus:border-[#0B1F33] focus:ring-2 focus:ring-[#0B1F33]/10 disabled:opacity-50";
+    "w-full h-11 pl-10 pr-4 text-sm bg-slate-50 border border-slate-200 rounded-lg text-[#0F172A] placeholder:text-slate-400 transition-all duration-150 focus:outline-none focus:bg-white focus:border-[#002664] focus:ring-2 focus:ring-[#002664]/10 disabled:opacity-50";
 
   return (
     <div className="space-y-7">
       {/* Heading */}
       <div className="space-y-1">
-        <h2 className="text-2xl font-bold tracking-tight text-[#0B1F33]">Welcome back</h2>
+        <h2 className="text-2xl font-bold tracking-tight text-[#002664]">Welcome back</h2>
         <p className="text-sm text-slate-500">Sign in to your operations portal</p>
       </div>
 
@@ -99,7 +99,7 @@ export default function LoginPage() {
               autoComplete="email"
               required
               disabled={isLoading}
-              placeholder="name@preedhar.com"
+              placeholder="name@latifalstar.com"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               className={inputClass}
@@ -132,7 +132,7 @@ export default function LoginPage() {
         <button
           type="submit"
           disabled={isLoading}
-          className="w-full h-11 mt-2 inline-flex items-center justify-center gap-2 font-semibold text-sm rounded-lg bg-[#0B1F33] hover:bg-[#0F2940] active:scale-[0.99] text-white shadow-sm transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-[#0B1F33]/40 focus:ring-offset-2 disabled:opacity-60 disabled:cursor-not-allowed cursor-pointer"
+          className="w-full h-11 mt-2 inline-flex items-center justify-center gap-2 font-semibold text-sm rounded-lg bg-[#002664] hover:bg-[#001D4D] active:scale-[0.99] text-white shadow-sm transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-[#002664]/40 focus:ring-offset-2 disabled:opacity-60 disabled:cursor-not-allowed cursor-pointer"
         >
           {isLoading ? (
             <>

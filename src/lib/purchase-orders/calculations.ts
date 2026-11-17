@@ -8,7 +8,7 @@ import {
   calculateQuotationTotals,
   UNIT_OPTIONS,
 } from "@/lib/quotations/calculations";
-import { PREEDHAR_COMPANY_DETAILS } from "@/lib/invoices/calculations";
+import { LATIFAL_STAR_COMPANY_DETAILS, PREEDHAR_COMPANY_DETAILS } from "@/lib/invoices/calculations";
 
 export {
   DEFAULT_VAT_RATE,
@@ -16,6 +16,7 @@ export {
   calculateLineItem,
   calculateQuotationTotals,
   UNIT_OPTIONS,
+  LATIFAL_STAR_COMPANY_DETAILS,
   PREEDHAR_COMPANY_DETAILS,
   type CalculatedItem,
   type CalculatedQuotationTotals,
@@ -36,5 +37,5 @@ export const DEFAULT_PURCHASE_ORDER_TERMS = `1. Delivery Location: As specified 
 2. Delivery Schedule: Materials and equipment must be delivered strictly on or before the Expected Delivery Date.
 3. Quality Standards: All supplied items must be brand new, unblemished, and comply with UAE safety and DEWA/DCD standards.
 4. Documentation: A valid Delivery Advice Note (DN) and Original Tax Invoice must accompany each delivery shipment.
-5. Inspection & Acceptance: Goods are subject to site technical inspection and approval by the PREEDHAR Project Engineer prior to formal acceptance.
+5. Inspection & Acceptance: Goods are subject to site technical inspection and approval by the LATIFAL STAR Project Engineer prior to formal acceptance.
 6. Payment Terms: Payment will be processed within 30 days following satisfactory receipt, testing, and approval of goods.`;

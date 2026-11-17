@@ -28,7 +28,7 @@ export const IconButton = React.forwardRef<HTMLButtonElement, IconButtonProps>(
     const variantStyles = {
       primary: "bg-slate-400 hover:bg-[#1D4ED8] text-white shadow-xs focus-visible:ring-slate-400",
       secondary: "bg-white hover:bg-slate-50 text-slate-700 border border-slate-300 shadow-xs focus-visible:ring-slate-400",
-      navy: "bg-[#0B1F33] hover:bg-[#1A385C] text-white shadow-xs focus-visible:ring-[#0B1F33]",
+      navy: "bg-[#002664] hover:bg-[#003080] text-white shadow-xs focus-visible:ring-[#002664]",
       outline: "bg-transparent hover:bg-slate-100 text-slate-700 border border-slate-300 focus-visible:ring-slate-400",
       ghost: "bg-transparent hover:bg-slate-100 text-slate-600 hover:text-slate-900 focus-visible:ring-slate-300",
       destructive: "bg-red-50 hover:bg-red-100 text-red-600 border border-red-200 focus-visible:ring-red-500",

@@ -48,7 +48,7 @@ export function PurchaseOrderTable({
         <div className="w-12 h-12 rounded-full bg-slate-100 border border-slate-200 flex items-center justify-center text-slate-700 mx-auto mb-3">
           <ClipboardList className="w-6 h-6" />
         </div>
-        <h3 className="text-sm font-bold text-[#0B1F33]">No Purchase Orders Found</h3>
+        <h3 className="text-sm font-bold text-[#002664]">No Purchase Orders Found</h3>
         <p className="text-xs text-slate-500 max-w-sm mx-auto mt-1">
           No purchase orders match your search or filter criteria. Try adjusting your filters or create a new purchase order.
         </p>
@@ -92,7 +92,7 @@ export function PurchaseOrderTable({
                         className={`hover:underline ${
                           isCancelled
                             ? "line-through text-slate-400"
-                            : "text-[#0B1F33] font-semibold"
+                            : "text-[#002664] font-semibold"
                         }`}
                       >
                         {po.purchaseOrderNumber}
@@ -128,7 +128,7 @@ export function PurchaseOrderTable({
                   {/* Subject & Project */}
                   <td className="py-3.5 px-4 max-w-[240px]">
                     <div
-                      className={`font-medium line-clamp-1 group-hover:text-[#0B1F33] ${
+                      className={`font-medium line-clamp-1 group-hover:text-[#002664] ${
                         isCancelled ? "text-slate-400" : "text-slate-800"
                       }`}
                       title={po.subject}
@@ -155,7 +155,7 @@ export function PurchaseOrderTable({
                   <td className="py-3.5 px-4 text-right whitespace-nowrap">
                     <div
                       className={`font-bold font-numeric text-[13px] ${
-                        isCancelled ? "text-slate-400" : "text-[#0B1F33]"
+                        isCancelled ? "text-slate-400" : "text-[#002664]"
                       }`}
                     >
                       {formatAED(po.grandTotal)}
@@ -179,7 +179,7 @@ export function PurchaseOrderTable({
                       <Button
                         variant="ghost"
                         size="sm"
-                        className="h-7 w-7 p-0 text-slate-500 hover:text-[#0B1F33]"
+                        className="h-7 w-7 p-0 text-slate-500 hover:text-[#002664]"
                         title="View Purchase Order"
                         onClick={() => onView(po)}
                       >
@@ -188,7 +188,7 @@ export function PurchaseOrderTable({
                       <Button
                         variant="ghost"
                         size="sm"
-                        className="h-7 w-7 p-0 text-slate-500 hover:text-[#0B1F33]"
+                        className="h-7 w-7 p-0 text-slate-500 hover:text-[#002664]"
                         title="Edit Purchase Order"
                         onClick={() => onEdit(po)}
                       >
@@ -197,7 +197,7 @@ export function PurchaseOrderTable({
                       <Button
                         variant="ghost"
                         size="sm"
-                        className="h-7 w-7 p-0 text-slate-500 hover:text-[#0B1F33]"
+                        className="h-7 w-7 p-0 text-slate-500 hover:text-[#002664]"
                         title="Update Document Status"
                         onClick={() => onChangeStatus(po)}
                       >
@@ -229,7 +229,7 @@ export function PurchaseOrderTable({
         <div className="flex items-center gap-4 font-numeric">
           <span>
             Total Procurement Commitment:{" "}
-            <strong className="text-[#0B1F33]">
+            <strong className="text-[#002664]">
               {formatAED(
                 purchaseOrders
                   .filter((p) => p.status !== "CANCELLED")

@@ -10,7 +10,7 @@ import { formatAED, formatDate } from "@/lib/utils";
 import type { Invoice } from "@/lib/data/invoices-mock";
 import { PDFService } from "@/lib/pdf";
 import {
-  PREEDHAR_COMPANY_DETAILS,
+  LATIFAL_STAR_COMPANY_DETAILS,
   type InvoiceDocumentStatus,
   type InvoicePaymentStatus,
 } from "@/lib/invoices/calculations";
@@ -170,18 +170,18 @@ export function InvoiceDetailsModal({
           </div>
                     <div>
             <h2 className="text-base font-bold tracking-tight">
-              <span className="text-[#0B1F33]">LATIFAL STAR</span>
-              <span className="text-[#E07614]"> TECHNICAL SERVICES CO. L.L.C.</span>
+              <span className="text-[#002664]">LATIFAL STAR</span>
+              <span className="text-[#0052CC]"> TECHNICAL SERVICES</span>
             </h2>
             
           </div>
         </div>
 
         <div className="text-left sm:text-right">
-          <span className="text-lg font-extrabold uppercase tracking-wider text-[#0B1F33] block">
+          <span className="text-lg font-extrabold uppercase tracking-wider text-[#002664] block">
             TAX INVOICE
           </span>
-          <span className="text-xs font-bold text-[#0B1F33] font-numeric block mt-0.5">
+          <span className="text-xs font-bold text-[#002664] font-numeric block mt-0.5">
             {invoice.invoiceNumber}
           </span>
           {invoice.quotationNumber && (
@@ -237,7 +237,7 @@ export function InvoiceDetailsModal({
         <span className="text-[10px] uppercase font-bold text-slate-400 block">
           Scope of Works / Technical Services
         </span>
-        <p className="text-xs font-bold text-[#0B1F33] mt-0.5 leading-snug">
+        <p className="text-xs font-bold text-[#002664] mt-0.5 leading-snug">
           {invoice.subject}
         </p>
       </div>
@@ -296,15 +296,15 @@ export function InvoiceDetailsModal({
           </span>
           <div className="grid grid-cols-2 gap-y-1 text-slate-700">
             <span className="text-slate-500">Beneficiary:</span>
-            <span className="font-semibold">{PREEDHAR_COMPANY_DETAILS.accountName}</span>
+            <span className="font-semibold">{LATIFAL_STAR_COMPANY_DETAILS.accountName}</span>
             <span className="text-slate-500">Bank:</span>
-            <span className="font-semibold">{PREEDHAR_COMPANY_DETAILS.bankName}</span>
+            <span className="font-semibold">{LATIFAL_STAR_COMPANY_DETAILS.bankName}</span>
             <span className="text-slate-500">Branch:</span>
-            <span>{PREEDHAR_COMPANY_DETAILS.bankBranch}</span>
+            <span>{LATIFAL_STAR_COMPANY_DETAILS.bankBranch}</span>
             <span className="text-slate-500">IBAN:</span>
-            <span className="font-mono font-bold text-[#0B1F33]">{PREEDHAR_COMPANY_DETAILS.iban}</span>
+            <span className="font-mono font-bold text-[#002664]">{LATIFAL_STAR_COMPANY_DETAILS.iban}</span>
             <span className="text-slate-500">SWIFT / BIC:</span>
-            <span className="font-mono font-semibold">{PREEDHAR_COMPANY_DETAILS.swiftCode}</span>
+            <span className="font-mono font-semibold">{LATIFAL_STAR_COMPANY_DETAILS.swiftCode}</span>
           </div>
         </div>
 
@@ -337,8 +337,8 @@ export function InvoiceDetailsModal({
             </span>
           </div>
           <div className="flex justify-between pt-2 border-t border-slate-300 text-sm">
-            <span className="font-bold text-[#0B1F33]">Total Payable:</span>
-            <span className="font-bold text-[#0B1F33] font-numeric">
+            <span className="font-bold text-[#002664]">Total Payable:</span>
+            <span className="font-bold text-[#002664] font-numeric">
               {formatAED(invoice.grandTotal)}
             </span>
           </div>

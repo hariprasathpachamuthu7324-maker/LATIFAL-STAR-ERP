@@ -71,7 +71,7 @@ export default function DashboardPage() {
       count: 0,
       amount: 0,
       percentage: 0,
-      color: "bg-[#0B1F33]",
+      color: "bg-[#002664]",
     },
     {
       category: "Purchase Orders Committed",
@@ -183,7 +183,7 @@ export default function DashboardPage() {
             count: invoices.length,
             amount: invTotalVal,
             percentage: invPct,
-            color: "bg-[#0B1F33]",
+            color: "bg-[#002664]",
           },
           {
             category: "Purchase Orders Committed",

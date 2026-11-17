@@ -53,9 +53,9 @@ export function MobileDrawer() {
       />
 
       {/* Sliding Drawer Container */}
-      <div className="relative flex flex-col w-72 max-w-[80vw] bg-[#0B1F33] text-white h-full z-10 shadow-2xl border-r border-[#1A385C] animate-in slide-in-from-left duration-200">
+      <div className="relative flex flex-col w-72 max-w-[80vw] bg-[#001D4D] text-white h-full z-10 shadow-2xl border-r border-[#003080] animate-in slide-in-from-left duration-200">
         {/* Header */}
-        <div className="h-16 flex items-center justify-between px-4 border-b border-[#1A385C] shrink-0">
+        <div className="h-16 flex items-center justify-between px-4 border-b border-[#003080] shrink-0">
           <div className="flex items-center gap-3">
             <div className="w-9 h-9 bg-white rounded-lg p-1.5 flex items-center justify-center shrink-0 shadow-sm">
               <Image
@@ -67,10 +67,10 @@ export function MobileDrawer() {
               />
             </div>
             <div className="flex flex-col">
-              <span className="text-sm font-bold tracking-tight text-[#3B82F6] leading-tight">
+              <span className="text-sm font-bold tracking-tight text-white leading-tight">
                 LATIFAL STAR
               </span>
-              <span className="text-[9px] font-semibold text-[#E07614] tracking-wider uppercase">
+              <span className="text-[9px] font-semibold text-[#60A5FA] tracking-wider uppercase">
                 TECHNICAL SERVICES
               </span>
             </div>
@@ -80,7 +80,7 @@ export function MobileDrawer() {
             type="button"
             onClick={() => setMobileDrawerOpen(false)}
             aria-label="Close navigation menu"
-            className="w-8 h-8 rounded-lg bg-[#112843] text-slate-300 hover:text-white flex items-center justify-center focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 cursor-pointer"
+            className="w-8 h-8 rounded-lg bg-[#002664] text-slate-300 hover:text-white flex items-center justify-center focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 cursor-pointer"
           >
             <X className="w-4 h-4" />
           </button>
@@ -106,12 +106,12 @@ export function MobileDrawer() {
                       className={cn(
                         "flex items-center gap-3 px-3 py-2.5 rounded-lg text-xs font-medium transition-all duration-150 relative focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-400",
                         isActive
-                          ? "bg-[#1A385C] text-white font-semibold"
-                          : "text-slate-300 hover:text-white hover:bg-[#112843]/60"
+                          ? "bg-[#003387] text-white font-semibold"
+                          : "text-slate-300 hover:text-white hover:bg-[#002664]/60"
                       )}
                     >
                       {isActive && (
-                        <span className="absolute left-0 top-2 bottom-2 w-1 bg-[#2563EB] rounded-r-full" />
+                        <span className="absolute left-0 top-2 bottom-2 w-1 bg-[#60A5FA] rounded-r-full" />
                       )}
 
                       <Icon
@@ -124,7 +124,7 @@ export function MobileDrawer() {
                       <span className="truncate flex-1">{item.title}</span>
 
                       {item.badge && (
-                        <span className="px-1.5 py-0.5 rounded text-[10px] bg-[#2563EB] text-white font-bold">
+                        <span className="px-1.5 py-0.5 rounded text-[10px] bg-[#0052CC] text-white font-bold">
                           {item.badge}
                         </span>
                       )}
@@ -137,9 +137,9 @@ export function MobileDrawer() {
         </div>
 
         {/* Mobile User Profile Footer */}
-        <div className="p-4 border-t border-[#1A385C] bg-[#070E18]/60 space-y-3 shrink-0">
+        <div className="p-4 border-t border-[#003080] bg-[#001230] space-y-3 shrink-0">
           <div className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-full bg-[#112843] border border-[#1A385C] flex items-center justify-center text-white shrink-0 text-xs font-bold">
+            <div className="w-8 h-8 rounded-full bg-[#002664] border border-[#003080] flex items-center justify-center text-white shrink-0 text-xs font-bold">
               {user?.name ? user.name.charAt(0).toUpperCase() : <User className="w-4 h-4" />}
             </div>
             <div className="flex-1 min-w-0">
@@ -156,7 +156,7 @@ export function MobileDrawer() {
                 </Badge>
               </div>
               <p className="text-[11px] text-slate-400 truncate">
-                {user?.email || "user@preedhar.local"}
+                {user?.email || "user@latifalstar.com"}
               </p>
             </div>
           </div>
@@ -165,7 +165,7 @@ export function MobileDrawer() {
             type="button"
             disabled={isLoggingOut}
             onClick={handleLogout}
-            className="w-full flex items-center justify-center gap-2 py-2 px-3 rounded-lg text-xs font-medium text-slate-300 hover:text-white bg-[#112843]/60 hover:bg-rose-900/40 hover:text-rose-200 border border-transparent hover:border-rose-700/50 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-rose-500 cursor-pointer"
+            className="w-full flex items-center justify-center gap-2 py-2 px-3 rounded-lg text-xs font-medium text-slate-300 hover:text-white bg-[#002664]/60 hover:bg-rose-900/40 hover:text-rose-200 border border-transparent hover:border-rose-700/50 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-rose-500 cursor-pointer"
           >
             {isLoggingOut ? (
               <Loader2 className="w-3.5 h-3.5 animate-spin" />

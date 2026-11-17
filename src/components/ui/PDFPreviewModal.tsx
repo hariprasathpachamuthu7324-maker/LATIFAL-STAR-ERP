@@ -43,13 +43,13 @@ export function PDFPreviewModal({ open, onClose, blobUrl, filename }: PDFPreview
   return (
     <div className="fixed inset-0 z-[700] flex flex-col bg-black/80" role="dialog" aria-modal="true">
       {/* Top bar */}
-      <div className="flex items-center justify-between px-4 py-2.5 bg-[#0B1F33] shrink-0">
+      <div className="flex items-center justify-between px-4 py-2.5 bg-[#002664] shrink-0">
         <span className="text-sm font-medium text-white truncate">{filename}</span>
         <div className="flex items-center gap-2">
           <a
             href={blobUrl}
             download={filename}
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium bg-[#E07614] text-white rounded-lg hover:bg-[#c96a10] transition-colors"
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium bg-[#002664] text-white rounded-lg hover:bg-[#001D4D] transition-colors"
           >
             <Download className="w-3.5 h-3.5" />
             Download
@@ -75,7 +75,7 @@ export function PDFPreviewModal({ open, onClose, blobUrl, filename }: PDFPreview
         >
           <div className="text-white text-center">
             <p>Your browser does not support inline PDF viewing.</p>
-            <a href={blobUrl} download={filename} className="text-[#E07614] hover:underline mt-2 inline-block">
+            <a href={blobUrl} download={filename} className="text-[#0052CC] hover:underline mt-2 inline-block">
               Click here to download the PDF
             </a>
           </div>

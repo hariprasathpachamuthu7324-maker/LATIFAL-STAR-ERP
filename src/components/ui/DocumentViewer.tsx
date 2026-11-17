@@ -99,7 +99,7 @@ export function DocumentViewer({
       )}
     >
       {/* Toolbar */}
-      <header className="shrink-0 h-[60px] bg-[#0B1F33] border-b border-[#1a3a5c] shadow-lg px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-4 z-10 print:hidden">
+      <header className="shrink-0 h-[60px] bg-[#002664] border-b border-[#003080] shadow-lg px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-4 z-10 print:hidden">
         {/* Left: Back button (mobile) + doc info */}
         <div className="flex items-center gap-3 min-w-0">
           <Button
@@ -114,11 +114,11 @@ export function DocumentViewer({
           </Button>
 
           {/* Orange accent bar */}
-          <div className="hidden md:block w-0.5 h-7 rounded-full bg-[#E07614] shrink-0" />
+          <div className="hidden md:block w-0.5 h-7 rounded-full bg-[#0052CC] shrink-0" />
 
           <div className="min-w-0">
             <div className="flex items-center gap-2 flex-wrap">
-              <span className="text-[10px] uppercase font-bold tracking-widest text-[#E07614]">
+              <span className="text-[10px] uppercase font-bold tracking-widest text-[#0052CC]">
                 {documentType}
               </span>
               <span className="text-slate-600">·</span>

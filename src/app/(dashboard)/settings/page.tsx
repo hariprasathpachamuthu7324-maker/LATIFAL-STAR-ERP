@@ -75,14 +75,14 @@ export default function SettingsPage() {
       setSettings(saved);
 
       if (typeof window !== "undefined") {
-        localStorage.setItem("preedhar_app_settings", JSON.stringify(saved));
+        localStorage.setItem("latifal_star_app_settings", JSON.stringify(saved));
       }
 
       // Log structured audit trail event
       await AuditService.logEvent({
         actorId: user?.id || "usr_unknown",
         actorName: user?.name || "System User",
-        actorEmail: user?.email || "user@preedhar.local",
+        actorEmail: user?.email || "user@latifalstar.com",
         actorRole: user?.role || "ADMIN",
         action: "UPDATE_SETTINGS",
         entityType: "SETTINGS",
@@ -112,7 +112,7 @@ export default function SettingsPage() {
     const saved = await SettingsRepository.saveSettings(DEFAULT_APP_SETTINGS);
     setSettings(saved);
     if (typeof window !== "undefined") {
-      localStorage.setItem("preedhar_app_settings", JSON.stringify(DEFAULT_APP_SETTINGS));
+      localStorage.setItem("latifal_star_app_settings", JSON.stringify(DEFAULT_APP_SETTINGS));
     }
     toast.info("Settings reset to LATIFAL STAR corporate defaults");
   };
@@ -188,7 +188,7 @@ export default function SettingsPage() {
                 onClick={() => setActiveTab(tab.id)}
                 className={`w-full flex items-center gap-3 px-3 py-2.5 rounded text-xs font-semibold tracking-tight transition-colors text-left ${
                   isActive
-                    ? "bg-[#0B1F33] text-white"
+                    ? "bg-[#002664] text-white"
                     : "text-slate-600 hover:bg-slate-100 hover:text-slate-900"
                 }`}
               >

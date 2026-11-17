@@ -1,5 +1,5 @@
 /**
- * PREEDHAR Technical Services - Supabase Environment Configuration
+ * LATIFAL STAR Technical Services - Supabase Environment Configuration
  * 
  * IMPORTANT: This module is side-effect-free and does not import browser or server runtimes.
  * It uses direct literal access to process.env.NEXT_PUBLIC_* to ensure Next.js / Turbopack

@@ -87,7 +87,7 @@ export function WorkCompletionFormModal({
     completionPercentage: 100,
     observations: "",
     materialsUsed: "",
-    engineerInCharge: "Eng. Suresh Preedhar",
+    engineerInCharge: "Project Engineer",
     clientRemarks: "",
     clientRepName: "",
     clientDesignation: "Facility Engineer",
@@ -183,7 +183,7 @@ export function WorkCompletionFormModal({
         completionPercentage: 100,
         observations: "",
         materialsUsed: "",
-        engineerInCharge: "Eng. Suresh Preedhar",
+        engineerInCharge: "Project Engineer",
         clientRemarks: "",
         clientRepName: defaultCust ? defaultCust.contactPerson : "",
         clientDesignation: "Facility Engineer",
@@ -742,13 +742,13 @@ export function WorkCompletionFormModal({
         <WorkspaceSummaryPanel>
           <div className="space-y-6">
             <div className="space-y-3">
-              <h3 className="text-sm font-bold text-[#0B1F33] uppercase tracking-wider border-b border-[#E2E8F0] pb-2">
+              <h3 className="text-sm font-bold text-[#002664] uppercase tracking-wider border-b border-[#E2E8F0] pb-2">
                 Handover Progress
               </h3>
               
               <div className="bg-slate-50 p-4 rounded-lg border border-[#E2E8F0] space-y-4">
                 <div className="flex items-center justify-between">
-                  <span className="font-bold text-sm text-[#0B1F33]">Overall Completion:</span>
+                  <span className="font-bold text-sm text-[#002664]">Overall Completion:</span>
                   <span className="font-bold text-lg text-[#2563EB] font-numeric">
                     {formData.completionPercentage}%
                   </span>
@@ -777,7 +777,7 @@ export function WorkCompletionFormModal({
             </div>
 
             <div className="space-y-3">
-              <h3 className="text-sm font-bold text-[#0B1F33] uppercase tracking-wider border-b border-[#E2E8F0] pb-2">
+              <h3 className="text-sm font-bold text-[#002664] uppercase tracking-wider border-b border-[#E2E8F0] pb-2">
                 Supporting Documentation
               </h3>
               

@@ -143,7 +143,7 @@ export function QuotationStatusModal({
 
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center justify-between gap-2">
-                    <span className="font-bold text-xs text-[#0B1F33]">
+                    <span className="font-bold text-xs text-[#002664]">
                       {opt.label}
                     </span>
                     {isCurrent && (

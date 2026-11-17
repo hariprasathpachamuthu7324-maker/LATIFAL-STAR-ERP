@@ -29,7 +29,7 @@ export function ConfirmDialog({
       <DialogContent className="max-w-md sm:max-w-md p-0 overflow-hidden">
         <div className="p-6">
           <div className="flex gap-4">
-            <div className={`w-10 h-10 rounded-full flex items-center justify-center shrink-0 ${variant === "danger" ? "bg-red-100 text-red-600" : "bg-blue-100 text-[#0B1F33]"}`}>
+            <div className={`w-10 h-10 rounded-full flex items-center justify-center shrink-0 ${variant === "danger" ? "bg-red-100 text-red-600" : "bg-blue-100 text-[#002664]"}`}>
               <AlertTriangle className="w-5 h-5" />
             </div>
             <div className="space-y-1.5 pt-1">

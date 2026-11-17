@@ -34,13 +34,13 @@ export function Sidebar({ className }: { className?: string }) {
   return (
     <aside
       className={cn(
-        "hidden lg:flex flex-col fixed inset-y-0 left-0 z-40 bg-[#0B1F33] border-r border-[#1A385C] text-white transition-all duration-200 select-none",
+        "hidden lg:flex flex-col fixed inset-y-0 left-0 z-40 bg-[#001D4D] border-r border-[#003080] text-white transition-all duration-200 select-none",
         isCollapsed ? "w-[72px]" : "w-[260px]",
         className
       )}
     >
       {/* Brand & Logo Header */}
-      <div className="h-16 flex items-center justify-between px-3.5 border-b border-[#1A385C] shrink-0">
+      <div className="h-16 flex items-center justify-between px-3.5 border-b border-[#003080] shrink-0">
         <Link
           href="/dashboard"
           className={cn(
@@ -61,10 +61,10 @@ export function Sidebar({ className }: { className?: string }) {
 
           {!isCollapsed && (
             <div className="flex flex-col min-w-0">
-              <span className="text-sm font-bold tracking-tight text-[#3B82F6] leading-tight truncate">
+              <span className="text-sm font-bold tracking-tight text-white leading-tight truncate">
                 LATIFAL STAR
               </span>
-              <span className="text-[10px] font-semibold text-[#E07614] tracking-wider uppercase truncate">
+              <span className="text-[10px] font-semibold text-[#60A5FA] tracking-wider uppercase truncate">
                 TECHNICAL SERVICES
               </span>
             </div>
@@ -77,7 +77,7 @@ export function Sidebar({ className }: { className?: string }) {
             type="button"
             onClick={toggleCollapsed}
             aria-label="Collapse sidebar"
-            className="w-7 h-7 rounded-lg bg-[#112843] text-slate-300 hover:text-white hover:bg-[#1A385C] flex items-center justify-center transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 cursor-pointer"
+            className="w-7 h-7 rounded-lg bg-[#002664] text-slate-300 hover:text-white hover:bg-[#003387] flex items-center justify-center transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 cursor-pointer"
           >
             <ChevronLeft className="w-4 h-4" />
           </button>
@@ -86,12 +86,12 @@ export function Sidebar({ className }: { className?: string }) {
 
       {/* Expand button when collapsed */}
       {isCollapsed && (
-        <div className="flex justify-center py-2 border-b border-[#1A385C]/60">
+        <div className="flex justify-center py-2 border-b border-[#003080]/60">
           <button
             type="button"
             onClick={toggleCollapsed}
             aria-label="Expand sidebar"
-            className="w-7 h-7 rounded-lg bg-[#112843] text-slate-300 hover:text-white hover:bg-[#1A385C] flex items-center justify-center transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 cursor-pointer"
+            className="w-7 h-7 rounded-lg bg-[#002664] text-slate-300 hover:text-white hover:bg-[#003387] flex items-center justify-center transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 cursor-pointer"
           >
             <ChevronRight className="w-4 h-4" />
           </button>
@@ -104,11 +104,11 @@ export function Sidebar({ className }: { className?: string }) {
           <div key={group.group}>
             {/* Group label (expanded) or thin divider (collapsed, skip first) */}
             {!isCollapsed ? (
-              <h4 className="px-3 pt-3 pb-1 text-[10px] font-bold text-slate-500 uppercase tracking-wider">
+              <h4 className="px-3 pt-3 pb-1 text-[10px] font-bold text-slate-400 uppercase tracking-wider">
                 {group.group}
               </h4>
             ) : (
-              groupIdx > 0 && <div className="h-px bg-[#1A385C]/60 mx-3 my-2" />
+              groupIdx > 0 && <div className="h-px bg-[#003080]/60 mx-3 my-2" />
             )}
 
             <nav className="space-y-0.5">
@@ -124,21 +124,21 @@ export function Sidebar({ className }: { className?: string }) {
                     className={cn(
                       "flex items-center gap-3 px-3 py-2 rounded-lg text-xs font-medium transition-all duration-150 group relative focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-400",
                       isActive
-                        ? "bg-[#1A385C] text-white font-semibold shadow-xs"
-                        : "text-slate-300 hover:text-white hover:bg-[#112843]/60",
+                        ? "bg-[#003387] text-white font-semibold shadow-xs"
+                        : "text-slate-300 hover:text-white hover:bg-[#002664]/60",
                       isCollapsed && "justify-center px-0 py-2.5 w-full"
                     )}
                   >
                     {/* Active Left Indicator */}
                     {isActive && (
-                      <span className="absolute left-0 top-2 bottom-2 w-[3px] bg-[#E07614] rounded-r-full" />
+                      <span className="absolute left-0 top-2 bottom-2 w-[3px] bg-[#60A5FA] rounded-r-full" />
                     )}
 
                     <Icon
                       className={cn(
                         "w-[18px] h-[18px] shrink-0 transition-colors",
                         isActive
-                          ? "text-[#E07614]"
+                          ? "text-[#60A5FA]"
                           : "text-slate-400 group-hover:text-slate-200"
                       )}
                     />
@@ -148,7 +148,7 @@ export function Sidebar({ className }: { className?: string }) {
                     )}
 
                     {!isCollapsed && item.badge && (
-                      <span className="px-1.5 py-0.5 rounded text-[10px] bg-[#2563EB] text-white font-bold">
+                      <span className="px-1.5 py-0.5 rounded text-[10px] bg-[#0052CC] text-white font-bold">
                         {item.badge}
                       </span>
                     )}
@@ -175,11 +175,11 @@ export function Sidebar({ className }: { className?: string }) {
       </div>
 
       {/* User Info & Logout Footer */}
-      <div className="p-3 border-t border-[#1A385C] bg-[#070E18]/60 shrink-0">
+      <div className="p-3 border-t border-[#003080] bg-[#00173D]/80 shrink-0">
         {!isCollapsed ? (
           <div className="space-y-3">
             <div className="flex items-center gap-3">
-              <div className="w-8 h-8 rounded-full bg-[#112843] border border-[#1A385C] flex items-center justify-center text-white shrink-0 text-xs font-bold">
+              <div className="w-8 h-8 rounded-full bg-[#002664] border border-[#003080] flex items-center justify-center text-white shrink-0 text-xs font-bold">
                 {user?.name ? user.name.charAt(0).toUpperCase() : <User className="w-4 h-4" />}
               </div>
               <div className="flex-1 min-w-0">
@@ -196,7 +196,7 @@ export function Sidebar({ className }: { className?: string }) {
                   </Badge>
                 </div>
                 <p className="text-[11px] text-slate-400 truncate">
-                  {user?.email || "user@preedhar.local"}
+                  {user?.email || "user@latifalstar.com"}
                 </p>
               </div>
             </div>
@@ -205,7 +205,7 @@ export function Sidebar({ className }: { className?: string }) {
               type="button"
               disabled={isLoggingOut || isAuthLoading}
               onClick={handleLogout}
-              className="w-full flex items-center justify-center gap-2 py-1.5 px-3 rounded-lg text-xs font-medium text-slate-300 hover:text-white bg-[#112843]/50 hover:bg-rose-900/40 hover:text-rose-200 border border-transparent hover:border-rose-700/50 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-rose-500 cursor-pointer"
+              className="w-full flex items-center justify-center gap-2 py-1.5 px-3 rounded-lg text-xs font-medium text-slate-300 hover:text-white bg-[#002664]/70 hover:bg-rose-900/40 hover:text-rose-200 border border-transparent hover:border-rose-700/50 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-rose-500 cursor-pointer"
             >
               {isLoggingOut ? (
                 <Loader2 className="w-3.5 h-3.5 animate-spin" />
@@ -218,7 +218,7 @@ export function Sidebar({ className }: { className?: string }) {
         ) : (
           <div className="flex flex-col items-center gap-2">
             <Tooltip content={`${user?.name || "User"} (${role})`} position="right">
-              <div className="w-8 h-8 rounded-full bg-[#112843] border border-[#1A385C] flex items-center justify-center text-white text-xs font-bold cursor-pointer">
+              <div className="w-8 h-8 rounded-full bg-[#002664] border border-[#003080] flex items-center justify-center text-white text-xs font-bold cursor-pointer">
                 {user?.name ? user.name.charAt(0).toUpperCase() : <User className="w-4 h-4" />}
               </div>
             </Tooltip>
@@ -228,7 +228,7 @@ export function Sidebar({ className }: { className?: string }) {
                 disabled={isLoggingOut}
                 onClick={handleLogout}
                 aria-label="Sign out"
-                className="w-8 h-8 rounded-lg flex items-center justify-center text-slate-400 hover:text-rose-400 hover:bg-[#112843] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-rose-500 cursor-pointer"
+                className="w-8 h-8 rounded-lg flex items-center justify-center text-slate-400 hover:text-rose-400 hover:bg-[#002664] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-rose-500 cursor-pointer"
               >
                 {isLoggingOut ? (
                   <Loader2 className="w-3.5 h-3.5 animate-spin" />

@@ -66,7 +66,7 @@ export function DialogContent({
       )}
     >
       {/* Top accent bar */}
-      <div className="h-1 w-full bg-gradient-to-r from-[#0B1F33] via-[#1E51A2] to-[#E07614]" />
+      <div className="h-1 w-full bg-gradient-to-r from-[#001D4D] via-[#002664] to-[#0052CC]" />
       <div className="p-6">
         {onClose && (
           <div className="absolute top-4 right-4">
@@ -98,7 +98,7 @@ export function DialogHeader({ className, ...props }: React.HTMLAttributes<HTMLD
 export function DialogTitle({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) {
   return (
     <h2
-      className={cn("text-lg font-bold text-[#0B1F33] leading-snug tracking-tight", className)}
+      className={cn("text-lg font-bold text-[#002664] leading-snug tracking-tight", className)}
       {...props}
     />
   );

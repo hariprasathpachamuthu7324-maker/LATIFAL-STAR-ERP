@@ -160,14 +160,14 @@ export function QuotationDetailsModal({
           </div>
           <div>
             <h2 className="text-base font-bold tracking-tight">
-              <span className="text-[#0B1F33]">LATIFAL STAR</span>
-              <span className="text-[#E07614]"> TECHNICAL SERVICES CO. L.L.C.</span>
+              <span className="text-[#002664]">LATIFAL STAR</span>
+              <span className="text-[#0052CC]"> TECHNICAL SERVICES</span>
             </h2>
           </div>
         </div>
 
         <div className="text-left sm:text-right">
-          <span className="text-base font-extrabold uppercase tracking-wider text-[#0B1F33] block">
+          <span className="text-base font-extrabold uppercase tracking-wider text-[#002664] block">
             QUOTATION
           </span>
           <span className="text-xs font-bold text-[#2563EB] font-numeric block mt-0.5">
@@ -216,7 +216,7 @@ export function QuotationDetailsModal({
         <span className="text-[10px] uppercase font-bold text-slate-400 block">
           Scope of Works / Subject
         </span>
-        <p className="text-xs font-bold text-[#0B1F33] mt-0.5 leading-snug">
+        <p className="text-xs font-bold text-[#002664] mt-0.5 leading-snug">
           {quotation.subject}
         </p>
       </div>
@@ -298,7 +298,7 @@ export function QuotationDetailsModal({
             </span>
           </div>
           <div className="flex justify-between pt-2 border-t border-slate-300 text-sm">
-            <span className="font-bold text-[#0B1F33]">Total Payable:</span>
+            <span className="font-bold text-[#002664]">Total Payable:</span>
             <span className="font-bold text-[#2563EB] font-numeric">
               {formatAED(quotation.grandTotal)}
             </span>

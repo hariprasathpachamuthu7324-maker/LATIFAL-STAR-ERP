@@ -128,18 +128,18 @@ export function PurchaseOrderDetailsModal({
           </div>
                     <div>
             <h2 className="text-base font-bold tracking-tight">
-              <span className="text-[#0B1F33]">LATIFAL STAR</span>
-              <span className="text-[#E07614]"> TECHNICAL SERVICES CO. L.L.C.</span>
+              <span className="text-[#002664]">LATIFAL STAR</span>
+              <span className="text-[#0052CC]"> TECHNICAL SERVICES</span>
             </h2>
             
           </div>
         </div>
 
         <div className="text-left sm:text-right">
-          <span className="text-lg font-extrabold uppercase tracking-wider text-[#0B1F33] block">
+          <span className="text-lg font-extrabold uppercase tracking-wider text-[#002664] block">
             PURCHASE ORDER
           </span>
-          <span className="text-xs font-bold text-[#0B1F33] font-numeric block mt-0.5">
+          <span className="text-xs font-bold text-[#002664] font-numeric block mt-0.5">
             {purchaseOrder.purchaseOrderNumber}
           </span>
           {purchaseOrder.quotationNumber && (
@@ -191,11 +191,11 @@ export function PurchaseOrderDetailsModal({
       </div>
 
       {/* Scope Headline / Subject */}
-      <div className="p-3 bg-white rounded-md border-l-4 border-l-[#0B1F33] border border-slate-200 shadow-2xs">
+      <div className="p-3 bg-white rounded-md border-l-4 border-l-[#002664] border border-slate-200 shadow-2xs">
         <span className="text-[10px] uppercase font-bold text-slate-400 block">
           Procurement Scope / Requisition
         </span>
-        <p className="text-xs font-bold text-[#0B1F33] mt-0.5 leading-snug">
+        <p className="text-xs font-bold text-[#002664] mt-0.5 leading-snug">
           {purchaseOrder.subject}
         </p>
       </div>
@@ -284,8 +284,8 @@ export function PurchaseOrderDetailsModal({
             </span>
           </div>
           <div className="flex justify-between pt-2 border-t border-slate-300 text-sm">
-            <span className="font-bold text-[#0B1F33]">Total Order Value:</span>
-            <span className="font-bold text-[#0B1F33] font-numeric">
+            <span className="font-bold text-[#002664]">Total Order Value:</span>
+            <span className="font-bold text-[#002664] font-numeric">
               {formatAED(purchaseOrder.grandTotal)}
             </span>
           </div>

@@ -29,7 +29,7 @@ export function RecentInvoicesTable({ invoices }: { invoices: RecentInvoice[] })
     <Panel
       title={
         <div className="flex items-center gap-2">
-          <Receipt className="w-4 h-4 text-[#0B1F33]" />
+          <Receipt className="w-4 h-4 text-[#002664]" />
           <span>Recent Tax Invoices</span>
         </div>
       }

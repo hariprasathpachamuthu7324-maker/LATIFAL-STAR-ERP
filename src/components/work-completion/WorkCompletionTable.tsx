@@ -49,7 +49,7 @@ export function WorkCompletionTable({
         <div className="w-12 h-12 rounded-full bg-[#EFF6FF] border border-[#DBEAFE] flex items-center justify-center text-slate-600 mx-auto mb-3">
           <ClipboardCheck className="w-6 h-6" />
         </div>
-        <h3 className="text-sm font-bold text-[#0B1F33]">No Work Reports Found</h3>
+        <h3 className="text-sm font-bold text-[#002664]">No Work Reports Found</h3>
         <p className="text-xs text-slate-500 max-w-sm mx-auto mt-1">
           No work completion reports match your search or filter criteria. Try adjusting your filters or create a new site execution report.
         </p>
@@ -93,7 +93,7 @@ export function WorkCompletionTable({
                         className={`hover:underline ${
                           isCancelled
                             ? "line-through text-slate-400"
-                            : "text-[#0B1F33] font-semibold"
+                            : "text-[#002664] font-semibold"
                         }`}
                       >
                         {report.reportNumber}
@@ -126,7 +126,7 @@ export function WorkCompletionTable({
                   {/* Subject & Project */}
                   <td className="py-3.5 px-4 max-w-[240px]">
                     <div
-                      className={`font-medium line-clamp-1 group-hover:text-[#0B1F33] ${
+                      className={`font-medium line-clamp-1 group-hover:text-[#002664] ${
                         isCancelled ? "text-slate-400" : "text-slate-800"
                       }`}
                       title={report.subject}
@@ -151,7 +151,7 @@ export function WorkCompletionTable({
                   {/* Completion % */}
                   <td className="py-3.5 px-4 text-center whitespace-nowrap">
                     <div className="flex flex-col items-center gap-1">
-                      <span className="font-bold text-xs font-numeric text-[#0B1F33]">
+                      <span className="font-bold text-xs font-numeric text-[#002664]">
                         {report.completionPercentage}%
                       </span>
                       <div className="w-16 h-1.5 bg-slate-200 rounded-full overflow-hidden">
@@ -183,7 +183,7 @@ export function WorkCompletionTable({
                       <Button
                         variant="ghost"
                         size="sm"
-                        className="h-7 w-7 p-0 text-slate-500 hover:text-[#0B1F33]"
+                        className="h-7 w-7 p-0 text-slate-500 hover:text-[#002664]"
                         title="View Work Completion Certificate"
                         onClick={() => onView(report)}
                       >
@@ -192,7 +192,7 @@ export function WorkCompletionTable({
                       <Button
                         variant="ghost"
                         size="sm"
-                        className="h-7 w-7 p-0 text-slate-500 hover:text-[#0B1F33]"
+                        className="h-7 w-7 p-0 text-slate-500 hover:text-[#002664]"
                         title="Edit Report"
                         onClick={() => onEdit(report)}
                       >
@@ -201,7 +201,7 @@ export function WorkCompletionTable({
                       <Button
                         variant="ghost"
                         size="sm"
-                        className="h-7 w-7 p-0 text-slate-500 hover:text-[#0B1F33]"
+                        className="h-7 w-7 p-0 text-slate-500 hover:text-[#002664]"
                         title="Update Document Status"
                         onClick={() => onChangeStatus(report)}
                       >

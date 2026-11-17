@@ -21,7 +21,7 @@ export function WorkspaceHeader({
   actions,
 }: WorkspaceHeaderProps) {
   return (
-    <header className="shrink-0 h-16 md:h-18 bg-[#0B1F33] text-white shadow-md px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-4 z-20">
+    <header className="shrink-0 h-16 md:h-18 bg-[#002664] text-white shadow-md px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-4 z-20">
       <div className="flex items-center gap-4 min-w-0">
         <Button
           variant="ghost"
@@ -63,7 +63,7 @@ export function WorkspaceHeader({
               {typeof subtitle === 'string' && (subtitle.startsWith("LATIFAL STAR TECHNICAL SERVICES") || subtitle.startsWith("LATIFAL STAR TECHNICAL SERVICES")) ? (
                 <>
                   <span className="text-[#3B82F6]">LATIFAL STAR</span>
-                  <span className="text-[#E07614]"> TECHNICAL SERVICES</span>
+                  <span className="text-[#60A5FA]"> TECHNICAL SERVICES</span>
                   <span className="text-slate-400">{subtitle.replace("LATIFAL STAR TECHNICAL SERVICES", "").replace("LATIFAL STAR TECHNICAL SERVICES", "")}</span>
                 </>
               ) : (

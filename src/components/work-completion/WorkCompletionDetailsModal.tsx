@@ -138,21 +138,21 @@ export function WorkCompletionDetailsModal({
           </div>
           <div>
             <h2 className="text-base font-bold tracking-tight">
-              <span className="text-[#0B1F33]">LATIFAL STAR</span>
-              <span className="text-[#E07614]"> TECHNICAL SERVICES CO. L.L.C.</span>
+              <span className="text-[#002664]">LATIFAL STAR</span>
+              <span className="text-[#0052CC]"> TECHNICAL SERVICES</span>
             </h2>
           </div>
         </div>
 
         <div className="text-left sm:text-right">
-          <span className="text-lg font-extrabold uppercase tracking-wider text-[#0B1F33] block">
+          <span className="text-lg font-extrabold uppercase tracking-wider text-[#002664] block">
             WORK COMPLETION REPORT
           </span>
           <span className="text-xs font-bold text-[#2563EB] font-numeric block mt-0.5">
             {report.reportNumber}
           </span>
           {report.purchaseOrderNumber && (
-            <span className="text-[11px] text-[#0B1F33] font-semibold block font-numeric">
+            <span className="text-[11px] text-[#002664] font-semibold block font-numeric">
               PO Ref: {report.purchaseOrderNumber}
             </span>
           )}
@@ -209,7 +209,7 @@ export function WorkCompletionDetailsModal({
         <span className="text-[10px] uppercase font-bold text-slate-400 block">
           Executed Work Scope
         </span>
-        <p className="text-xs font-bold text-[#0B1F33] mt-0.5 leading-snug">
+        <p className="text-xs font-bold text-[#002664] mt-0.5 leading-snug">
           {report.subject}
         </p>
         {report.workDescription && (

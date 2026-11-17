@@ -18,7 +18,7 @@ export function ShellProvider({ children }: { children: React.ReactNode }) {
 
   // Restore collapsed state from localStorage on mount
   React.useEffect(() => {
-    const saved = localStorage.getItem("preedhar_sidebar_collapsed");
+    const saved = localStorage.getItem("latifal_sidebar_collapsed");
     if (saved !== null) {
       setIsCollapsed(saved === "true");
     }
@@ -27,7 +27,7 @@ export function ShellProvider({ children }: { children: React.ReactNode }) {
   const toggleCollapsed = () => {
     setIsCollapsed((prev) => {
       const next = !prev;
-      localStorage.setItem("preedhar_sidebar_collapsed", String(next));
+      localStorage.setItem("latifal_sidebar_collapsed", String(next));
       return next;
     });
   };

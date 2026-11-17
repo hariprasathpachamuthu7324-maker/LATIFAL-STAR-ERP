@@ -114,7 +114,7 @@ export const DEFAULT_INVOICE_TERMS = `1. Payment is due strictly in accordance w
 4. Any discrepancy or technical query regarding this invoice must be communicated in writing within 7 calendar days of receipt.
 5. All technical works are certified under LATIFAL STAR standard warranty terms upon settlement of final outstanding balance.`;
 
-export const PREEDHAR_COMPANY_DETAILS = {
+export const LATIFAL_STAR_COMPANY_DETAILS = {
   legalName: "LATIFAL STAR TECHNICAL SERVICES",
   address: "Deira, Port Saeed, Dubai",
   city: "Dubai",
@@ -129,4 +129,4 @@ export const PREEDHAR_COMPANY_DETAILS = {
   iban: "AE070260001012345678901",
   swiftCode: "EBILAEADXXX",
 };
-export const LATIFAL_STAR_COMPANY_DETAILS = PREEDHAR_COMPANY_DETAILS;
+export const PREEDHAR_COMPANY_DETAILS = LATIFAL_STAR_COMPANY_DETAILS;

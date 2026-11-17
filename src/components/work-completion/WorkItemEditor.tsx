@@ -53,7 +53,7 @@ export function WorkItemEditor({
     <div className="space-y-3">
       <div className="flex items-center justify-between pb-1 border-b border-slate-200">
         <div>
-          <h4 className="text-xs font-bold text-[#0B1F33] uppercase tracking-wider">
+          <h4 className="text-xs font-bold text-[#002664] uppercase tracking-wider">
             Executed Work & Service Scope Items
           </h4>
           <p className="text-[11px] text-slate-500">
@@ -79,8 +79,8 @@ export function WorkItemEditor({
             className="p-3.5 rounded-lg border border-slate-200 bg-slate-50/60 space-y-2.5 relative group"
           >
             <div className="flex items-center justify-between">
-              <span className="font-bold text-[11px] text-[#0B1F33] flex items-center gap-1.5 font-numeric">
-                <span className="w-5 h-5 rounded-full bg-[#0B1F33] text-white flex items-center justify-center text-[10px]">
+              <span className="font-bold text-[11px] text-[#002664] flex items-center gap-1.5 font-numeric">
+                <span className="w-5 h-5 rounded-full bg-[#002664] text-white flex items-center justify-center text-[10px]">
                   {index + 1}
                 </span>
                 Work Item #{index + 1}

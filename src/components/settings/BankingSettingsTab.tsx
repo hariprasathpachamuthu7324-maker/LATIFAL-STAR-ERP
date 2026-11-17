@@ -15,7 +15,7 @@ export function BankingSettingsTab({
   return (
     <div className="space-y-4">
       <div className="border-b border-slate-200 pb-2">
-        <h3 className="text-sm font-bold text-[#0B1F33] flex items-center gap-2">
+        <h3 className="text-sm font-bold text-[#002664] flex items-center gap-2">
           <Landmark className="w-4 h-4 text-[#2563EB]" />
           Commercial Banking & Remittance Coordinates
         </h3>

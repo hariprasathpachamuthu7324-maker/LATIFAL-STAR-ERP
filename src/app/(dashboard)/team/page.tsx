@@ -154,7 +154,7 @@ export default function TeamPage() {
     await AuditService.logEvent({
       actorId: user?.id || "usr_unknown",
       actorName: user?.name || "System User",
-      actorEmail: user?.email || "user@preedhar.local",
+      actorEmail: user?.email || "user@latifalstar.com",
       actorRole: user?.role || "ADMIN",
       action: isNew ? "CREATE" : "UPDATE",
       entityType: "TEAM_MEMBER",
@@ -197,7 +197,7 @@ export default function TeamPage() {
     await AuditService.logEvent({
       actorId: user?.id || "usr_unknown",
       actorName: user?.name || "System User",
-      actorEmail: user?.email || "user@preedhar.local",
+      actorEmail: user?.email || "user@latifalstar.com",
       actorRole: user?.role || "ADMIN",
       action: "ASSIGN_ROLE",
       entityType: "TEAM_MEMBER",
@@ -233,7 +233,7 @@ export default function TeamPage() {
     await AuditService.logEvent({
       actorId: user?.id || "usr_unknown",
       actorName: user?.name || "System User",
-      actorEmail: user?.email || "user@preedhar.local",
+      actorEmail: user?.email || "user@latifalstar.com",
       actorRole: user?.role || "ADMIN",
       action: "STATUS_CHANGE",
       entityType: "TEAM_MEMBER",
@@ -261,7 +261,7 @@ export default function TeamPage() {
     await AuditService.logEvent({
       actorId: user?.id || "usr_unknown",
       actorName: user?.name || "System User",
-      actorEmail: user?.email || "user@preedhar.local",
+      actorEmail: user?.email || "user@latifalstar.com",
       actorRole: user?.role || "ADMIN",
       action: "DELETE",
       entityType: "TEAM_MEMBER",

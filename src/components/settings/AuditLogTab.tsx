@@ -71,7 +71,7 @@ export function AuditLogTab() {
     switch (entityType) {
       case "CUSTOMER":
       case "TEAM_MEMBER":
-        return <Users className="w-3.5 h-3.5 text-[#0B1F33]" />;
+        return <Users className="w-3.5 h-3.5 text-[#002664]" />;
       case "QUOTATION":
       case "INVOICE":
       case "PURCHASE_ORDER":
@@ -90,7 +90,7 @@ export function AuditLogTab() {
       <div className="p-4 bg-slate-50 border border-slate-200 rounded-lg flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div className="space-y-1">
           <h3 className="text-sm font-bold text-slate-900 flex items-center gap-2">
-            <ShieldAlert className="w-4 h-4 text-[#0B1F33]" />
+            <ShieldAlert className="w-4 h-4 text-[#002664]" />
             System Audit Trail & Compliance Log
           </h3>
           <p className="text-xs text-slate-500">

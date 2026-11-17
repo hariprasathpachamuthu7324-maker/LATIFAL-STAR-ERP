@@ -64,7 +64,7 @@ export function InvoiceTable({
         <div className="w-12 h-12 rounded-full bg-[#EFF6FF] border border-[#DBEAFE] flex items-center justify-center text-slate-600 mx-auto mb-3">
           <Receipt className="w-6 h-6" />
         </div>
-        <h3 className="text-sm font-bold text-[#0B1F33]">No Tax Invoices Found</h3>
+        <h3 className="text-sm font-bold text-[#002664]">No Tax Invoices Found</h3>
         <p className="text-xs text-slate-500 max-w-sm mx-auto mt-1">
           No invoices match your search or filter criteria. Try adjusting your filters or create a new commercial tax invoice.
         </p>
@@ -117,7 +117,7 @@ export function InvoiceTable({
                         className={`hover:underline ${
                           isCancelled
                             ? "line-through text-slate-400"
-                            : "text-[#0B1F33] font-semibold"
+                            : "text-[#002664] font-semibold"
                         }`}
                       >
                         {inv.invoiceNumber}
@@ -153,7 +153,7 @@ export function InvoiceTable({
                   {/* Subject & Project */}
                   <td className="py-3.5 px-4 max-w-[240px]">
                     <div
-                      className={`font-medium line-clamp-1 group-hover:text-[#0B1F33] ${
+                      className={`font-medium line-clamp-1 group-hover:text-[#002664] ${
                         isCancelled ? "text-slate-400" : "text-slate-800"
                       }`}
                       title={inv.subject}
@@ -190,7 +190,7 @@ export function InvoiceTable({
                   <td className="py-3.5 px-4 text-right whitespace-nowrap">
                     <div
                       className={`font-bold font-numeric text-[13px] ${
-                        isCancelled ? "text-slate-400" : "text-[#0B1F33]"
+                        isCancelled ? "text-slate-400" : "text-[#002664]"
                       }`}
                     >
                       {formatAED(inv.grandTotal)}
@@ -249,7 +249,7 @@ export function InvoiceTable({
                       <Button
                         variant="ghost"
                         size="sm"
-                        className="h-7 w-7 p-0 text-slate-500 hover:text-[#0B1F33]"
+                        className="h-7 w-7 p-0 text-slate-500 hover:text-[#002664]"
                         title="View Tax Invoice"
                         onClick={() => onView(inv)}
                       >
@@ -258,7 +258,7 @@ export function InvoiceTable({
                       <Button
                         variant="ghost"
                         size="sm"
-                        className="h-7 w-7 p-0 text-slate-500 hover:text-[#0B1F33]"
+                        className="h-7 w-7 p-0 text-slate-500 hover:text-[#002664]"
                         title="Edit Invoice"
                         onClick={() => onEdit(inv)}
                       >
@@ -276,7 +276,7 @@ export function InvoiceTable({
                       <Button
                         variant="ghost"
                         size="sm"
-                        className="h-7 w-7 p-0 text-slate-500 hover:text-[#0B1F33]"
+                        className="h-7 w-7 p-0 text-slate-500 hover:text-[#002664]"
                         title="Update Document Status"
                         onClick={() => onChangeStatus(inv)}
                       >

@@ -112,7 +112,7 @@ export function QuotationTable({
                   {/* Subject & Project */}
                   <td className="py-3.5 px-4 max-w-[260px]">
                     <div
-                      className="font-medium text-slate-800 line-clamp-1 group-hover:text-[#0B1F33]"
+                      className="font-medium text-slate-800 line-clamp-1 group-hover:text-[#002664]"
                       title={q.subject}
                     >
                       {q.subject}
@@ -139,7 +139,7 @@ export function QuotationTable({
 
                   {/* Grand Total */}
                   <td className="py-3.5 px-4 text-right whitespace-nowrap">
-                    <div className="font-bold text-[#0B1F33] font-numeric text-[13px]">
+                    <div className="font-bold text-[#002664] font-numeric text-[13px]">
                       {formatAED(q.grandTotal)}
                     </div>
                     <div className="text-[10px] text-slate-400 font-numeric">
@@ -161,7 +161,7 @@ export function QuotationTable({
                       <Button
                         variant="ghost"
                         size="sm"
-                        className="h-7 w-7 p-0 text-slate-500 hover:text-[#0B1F33]"
+                        className="h-7 w-7 p-0 text-slate-500 hover:text-[#002664]"
                         title="View Commercial Proposal"
                         onClick={() => onView(q)}
                       >
@@ -170,7 +170,7 @@ export function QuotationTable({
                       <Button
                         variant="ghost"
                         size="sm"
-                        className="h-7 w-7 p-0 text-slate-500 hover:text-[#0B1F33]"
+                        className="h-7 w-7 p-0 text-slate-500 hover:text-[#002664]"
                         title="Edit Quotation"
                         onClick={() => onEdit(q)}
                       >
@@ -179,7 +179,7 @@ export function QuotationTable({
                       <Button
                         variant="ghost"
                         size="sm"
-                        className="h-7 w-7 p-0 text-slate-500 hover:text-[#0B1F33]"
+                        className="h-7 w-7 p-0 text-slate-500 hover:text-[#002664]"
                         title="Update Status"
                         onClick={() => onChangeStatus(q)}
                       >

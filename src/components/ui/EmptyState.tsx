@@ -34,7 +34,7 @@ export function EmptyState({
       <div className="w-12 h-12 rounded-full bg-[#EFF6FF] border border-[#DBEAFE] flex items-center justify-center text-[#2563EB] mb-4 shadow-xs">
         {icon || <FolderOpen className="w-6 h-6" />}
       </div>
-      <h4 className="text-base font-bold text-[#0B1F33] mb-1">{title}</h4>
+      <h4 className="text-base font-bold text-[#002664] mb-1">{title}</h4>
       <p className="text-sm text-slate-500 max-w-md mb-6">{description}</p>
       {(actionLabel || secondaryActionLabel) && (
         <div className="flex flex-wrap items-center justify-center gap-3">

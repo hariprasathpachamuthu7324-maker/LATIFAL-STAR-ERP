@@ -162,7 +162,7 @@ export function TeamMemberModal({
               label="Corporate Email Address"
               type="email"
               required
-              placeholder="e.g. rajesh.varma@preedhar.ae"
+              placeholder="e.g. engineer@latifalstar.com"
               value={formData.email}
               onChange={(e) =>
                 setFormData({ ...formData, email: e.target.value })

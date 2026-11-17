@@ -22,7 +22,7 @@ export function SectionHeader({
       )}
     >
       <div>
-        <h3 className="text-sm font-bold text-[#0B1F33] uppercase tracking-wider">
+        <h3 className="text-sm font-bold text-[#002664] uppercase tracking-wider">
           {title}
         </h3>
         {description && <p className="text-xs text-slate-500 mt-0.5">{description}</p>}

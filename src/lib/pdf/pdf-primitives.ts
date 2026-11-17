@@ -4,21 +4,21 @@ import { formatCurrency, formatDate } from "@/lib/utils";
 import { PREEDHAR_LOGO_BASE64 } from "./logo-base64";
 import { numberToWordsAED } from "./amount-to-words";
 
-// PREEDHAR Official Brand Colors — matched exactly to screenshots
+// LATIFAL STAR Official Brand Colors — extracted from official logo
 export const PDF_COLORS = {
-  primaryNavy:  [11, 31, 51]    as [number, number, number], // #0B1F33
-  brandOrange:  [224, 118, 20]  as [number, number, number], // #E07614 warm orange (PREEDHAR name)
-  brandBlue:    [30, 81, 162]   as [number, number, number], // #1E51A2 link/invoice blue
+  primaryNavy:  [0, 38, 100]    as [number, number, number], // #002664 Deep Navy from logo
+  brandOrange:  [0, 82, 204]    as [number, number, number], // #0052CC Royal Blue accent
+  brandBlue:    [0, 82, 204]    as [number, number, number], // #0052CC link/accent blue
   textDark:     [15, 23, 42]    as [number, number, number], // #0F172A
   textMuted:    [100, 116, 139] as [number, number, number], // #64748B
-  tableLabelBg: [220, 230, 242] as [number, number, number], // #DCE6F2 blue-grey label bg
+  tableLabelBg: [235, 243, 252] as [number, number, number], // #EBF3FC light soft blue
   tableBodyBg:  [255, 255, 255] as [number, number, number], // white
-  tableBorder:  [180, 195, 215] as [number, number, number], // #B4C3D7
-  totalRowBg:   [220, 230, 242] as [number, number, number], // same as label bg for total row
-  balanceBg:    [255, 240, 220] as [number, number, number], // warm orange tint for balance
-  balanceText:  [180, 80, 0]    as [number, number, number], // #B45000 orange for balance due
+  tableBorder:  [180, 200, 225] as [number, number, number], // #B4C8E1
+  totalRowBg:   [235, 243, 252] as [number, number, number], // same as label bg for total row
+  balanceBg:    [235, 245, 255] as [number, number, number], // soft blue tint for balance
+  balanceText:  [0, 38, 100]    as [number, number, number], // #002664 deep navy
   wordsBg:      [235, 245, 255] as [number, number, number], // light blue for amount in words box
-  footerLine:   [194, 65, 12]   as [number, number, number], // orange footer line (matches screenshots)
+  footerLine:   [0, 38, 100]    as [number, number, number], // #002664 deep navy footer line
 };
 
 export const PDF_COMPANY_DETAILS = {
@@ -76,7 +76,7 @@ function drawTwoToneCompanyName(doc: jsPDF, x: number, y: number, fontSize: numb
 }
 
 /**
- * 1. HEADER: Official PREEDHAR document header
+ * 1. HEADER: Official LATIFAL STAR document header
  * Logo (square, not stretched) + two-tone company name + divider + document title
  * showAddressInHeader = true for invoices (shows address/TRN lines)
  */

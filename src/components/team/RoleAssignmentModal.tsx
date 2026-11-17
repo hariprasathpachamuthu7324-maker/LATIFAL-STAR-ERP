@@ -51,7 +51,7 @@ export function RoleAssignmentModal({
       description:
         "Full unrestricted access across all commercial modules, financial settings, team administration, and system configurations.",
       icon: ShieldCheck,
-      color: "bg-[#0B1F33] text-white",
+      color: "bg-[#002664] text-white",
     },
     {
       role: "MANAGER" as TeamRole,
@@ -105,7 +105,7 @@ export function RoleAssignmentModal({
                 </div>
                 <div className="flex-1">
                   <div className="flex items-center justify-between">
-                    <span className="font-bold text-xs text-[#0B1F33]">
+                    <span className="font-bold text-xs text-[#002664]">
                       {opt.title}
                     </span>
                     {member.role === opt.role && (

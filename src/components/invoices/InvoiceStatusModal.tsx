@@ -186,7 +186,7 @@ export function InvoiceStatusModal({
                     <Icon className="w-4 h-4" />
                   </div>
                   <div className="flex-1">
-                    <span className="font-bold text-xs text-[#0B1F33] block">
+                    <span className="font-bold text-xs text-[#002664] block">
                       {opt.label}
                     </span>
                     <p className="text-[11px] text-slate-500 mt-0.5">

@@ -15,7 +15,7 @@ export function TaxSettingsTab({
   return (
     <div className="space-y-4">
       <div className="border-b border-slate-200 pb-2">
-        <h3 className="text-sm font-bold text-[#0B1F33] flex items-center gap-2">
+        <h3 className="text-sm font-bold text-[#002664] flex items-center gap-2">
           <Percent className="w-4 h-4 text-[#2563EB]" />
           UAE Federal Tax Authority (FTA) Registration
         </h3>
@@ -24,7 +24,7 @@ export function TaxSettingsTab({
         </p>
       </div>
 
-      <div className="p-3 rounded-lg bg-[#EFF6FF] border border-[#DBEAFE] text-xs text-[#0B1F33] flex items-start gap-2.5">
+      <div className="p-3 rounded-lg bg-[#EFF6FF] border border-[#DBEAFE] text-xs text-[#002664] flex items-start gap-2.5">
         <ShieldAlert className="w-4 h-4 text-[#2563EB] shrink-0 mt-0.5" />
         <div>
           <span className="font-bold block">UAE Federal Tax Authority Standard (5.00%)</span>
