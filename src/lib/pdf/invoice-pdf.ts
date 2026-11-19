@@ -157,11 +157,35 @@ export function generateInvoicePDF(
     currentY += (Array.isArray(wrapped) ? wrapped.length * 4 : 4) + 12;
   }
 
-  // 8. Sign-off + single signature
-  if (currentY + 26 > doc.internal.pageSize.getHeight() - 15) {
+  // 8. Space for Official Seal & Thanks and Regards Sign-off
+  const signoffHeight = 25 + 24;
+  if (currentY + signoffHeight > doc.internal.pageSize.getHeight() - 15) {
     doc.addPage();
     currentY = 16;
   }
+
+  // Clear vertical space for stamping company seal
+  currentY += 25;
+
+  // Sign-off text
+  doc.setFont("helvetica", "normal");
+  doc.setFontSize(8.5);
+  doc.setTextColor(...PDF_COLORS.textDark);
+  doc.text("Thanks and Regards,", startX, currentY);
+  currentY += 5;
+
+  doc.setFont("helvetica", "bold");
+  doc.setFontSize(8.5);
+  doc.setTextColor(...PDF_COLORS.primaryNavy);
+  doc.text(comp.name, startX, currentY);
+  currentY += 4.5;
+
+  doc.setFont("helvetica", "normal");
+  doc.setFontSize(8.5);
+  doc.setTextColor(...PDF_COLORS.textDark);
+  doc.text(comp.contactPerson || "Muthu", startX, currentY);
+  currentY += 4.5;
+  doc.text(comp.phone || "0561574740", startX, currentY);
 
   // 9. Footer
   renderOfficialFooter(doc, companyOverride);

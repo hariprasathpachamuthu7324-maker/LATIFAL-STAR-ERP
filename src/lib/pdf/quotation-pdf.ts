@@ -206,11 +206,15 @@ export function generateQuotationPDF(
 
   currentY += 6;
 
-  // 7. Thanks and Regards (Sign-off)
-  if (currentY + 28 > doc.internal.pageSize.getHeight() - 15) {
+  // 7. Space for Official Seal & Thanks and Regards (Sign-off)
+  const signoffHeight = 22 + 24;
+  if (currentY + signoffHeight > doc.internal.pageSize.getHeight() - 15) {
     doc.addPage();
     currentY = 16;
   }
+
+  // Clear vertical space for stamping company seal
+  currentY += 22;
 
   // Sign-off text
   doc.setFont("helvetica", "normal");
