@@ -22,43 +22,65 @@ export const QuotationsRepository = {
         return [];
       }
 
-      return data.map((row: any) => ({
-        id: row.id,
-        quotationNumber: row.quotation_number,
-        customerId: row.customer_id,
-        customerName: row.customer_name,
-        clientPrintedName: row.client_printed_name || undefined,
-        attention: row.attention || undefined,
-        quotationDate: row.quotation_date,
-        validUntil: row.valid_until,
-        subject: row.subject,
-        projectName: row.project_name,
-        projectLocation: row.project_location,
-        subtotal: Number(row.subtotal),
-        discount: Number(row.discount),
-        taxableAmount: Number(row.taxable_amount),
-        vatRate: Number(row.vat_rate),
-        vatAmount: Number(row.vat_amount),
-        grandTotal: Number(row.grand_total),
-        notes: row.notes || undefined,
-        termsAndConditions: row.terms_and_conditions,
-        status: row.status as Quotation["status"],
-        createdAt: row.created_at,
-        updatedAt: row.updated_at,
-        items: (row.quotation_items || [])
-          .sort((a: any, b: any) => (a.sort_order ?? 0) - (b.sort_order ?? 0))
-          .map((item: any) => ({
-            id: item.id,
-            description: item.description,
-            quantity: Number(item.quantity),
-            unit: item.unit,
-            unitPrice: Number(item.unit_price),
-            discount: Number(item.discount || 0),
-            taxableAmount: Number(item.taxable_amount || item.total || 0),
-            vatAmount: Number(item.vat_amount || 0),
-            total: Number(item.total ?? item.total_price ?? 0),
-          })),
-      }));
+      return data.map((row: any) => {
+        let signoffName = row.signoff_contact_name;
+        let signoffPhone = row.signoff_contact_phone;
+        let cleanNotes = row.notes;
+
+        if (row.notes && typeof row.notes === "string" && row.notes.includes("<!--SIGNOFF:")) {
+          const match = row.notes.match(/<!--SIGNOFF:(.*?)-->/);
+          if (match) {
+            try {
+              const meta = JSON.parse(match[1]);
+              if (!signoffName && meta.name) signoffName = meta.name;
+              if (!signoffPhone && meta.phone) signoffPhone = meta.phone;
+              cleanNotes = row.notes.replace(/<!--SIGNOFF:.*?-->/, "").trim();
+            } catch {
+              // ignore
+            }
+          }
+        }
+
+        return {
+          id: row.id,
+          quotationNumber: row.quotation_number,
+          customerId: row.customer_id,
+          customerName: row.customer_name,
+          clientPrintedName: row.client_printed_name || undefined,
+          attention: row.attention || undefined,
+          quotationDate: row.quotation_date,
+          validUntil: row.valid_until,
+          subject: row.subject,
+          projectName: row.project_name,
+          projectLocation: row.project_location,
+          subtotal: Number(row.subtotal),
+          discount: Number(row.discount),
+          taxableAmount: Number(row.taxable_amount),
+          vatRate: Number(row.vat_rate),
+          vatAmount: Number(row.vat_amount),
+          grandTotal: Number(row.grand_total),
+          notes: cleanNotes || undefined,
+          termsAndConditions: row.terms_and_conditions,
+          signoffContactName: signoffName || "Muthu",
+          signoffContactPhone: signoffPhone || "0561574740",
+          status: row.status as Quotation["status"],
+          createdAt: row.created_at,
+          updatedAt: row.updated_at,
+          items: (row.quotation_items || [])
+            .sort((a: any, b: any) => (a.sort_order ?? 0) - (b.sort_order ?? 0))
+            .map((item: any) => ({
+              id: item.id,
+              description: item.description,
+              quantity: Number(item.quantity),
+              unit: item.unit,
+              unitPrice: Number(item.unit_price),
+              discount: Number(item.discount || 0),
+              taxableAmount: Number(item.taxable_amount || item.total || 0),
+              vatAmount: Number(item.vat_amount || 0),
+              total: Number(item.total ?? item.total_price ?? 0),
+            })),
+        };
+      });
     } catch (err) {
       return [];
     }
@@ -84,7 +106,14 @@ export const QuotationsRepository = {
       items: resolvedItems,
     };
 
-    const { error: quoteErr } = await supabase.from("quotations").upsert({
+    const signoffMeta = {
+      name: quotationToSave.signoffContactName || "Muthu",
+      phone: quotationToSave.signoffContactPhone || "0561574740",
+    };
+    const baseNotes = (quotationToSave.notes || "").replace(/<!--SIGNOFF:.*?-->/, "").trim();
+    const notesWithMeta = `${baseNotes ? baseNotes + "\n" : ""}<!--SIGNOFF:${JSON.stringify(signoffMeta)}-->`;
+
+    let { error: quoteErr } = await supabase.from("quotations").upsert({
       id: resolvedId,
       quotation_number: quotationToSave.quotationNumber,
       customer_id: quotationToSave.customerId,
@@ -102,11 +131,41 @@ export const QuotationsRepository = {
       vat_rate: quotationToSave.vatRate,
       vat_amount: quotationToSave.vatAmount,
       grand_total: quotationToSave.grandTotal,
-      notes: quotationToSave.notes || null,
+      notes: notesWithMeta,
       terms_and_conditions: quotationToSave.termsAndConditions,
+      signoff_contact_name: quotationToSave.signoffContactName || "Muthu",
+      signoff_contact_phone: quotationToSave.signoffContactPhone || "0561574740",
       status: quotationToSave.status,
       updated_at: new Date().toISOString(),
     });
+
+    // Fallback if schema does not yet have signoff columns
+    if (quoteErr && (quoteErr.message?.includes("signoff") || quoteErr.code === "PGRST204")) {
+      const fallbackRes = await supabase.from("quotations").upsert({
+        id: resolvedId,
+        quotation_number: quotationToSave.quotationNumber,
+        customer_id: quotationToSave.customerId,
+        customer_name: quotationToSave.customerName,
+        client_printed_name: quotationToSave.clientPrintedName || null,
+        attention: quotationToSave.attention || null,
+        quotation_date: quotationToSave.quotationDate,
+        valid_until: quotationToSave.validUntil,
+        subject: quotationToSave.subject,
+        project_name: quotationToSave.projectName,
+        project_location: quotationToSave.projectLocation,
+        subtotal: quotationToSave.subtotal,
+        discount: quotationToSave.discount,
+        taxable_amount: quotationToSave.taxableAmount,
+        vat_rate: quotationToSave.vatRate,
+        vat_amount: quotationToSave.vatAmount,
+        grand_total: quotationToSave.grandTotal,
+        notes: notesWithMeta,
+        terms_and_conditions: quotationToSave.termsAndConditions,
+        status: quotationToSave.status,
+        updated_at: new Date().toISOString(),
+      });
+      quoteErr = fallbackRes.error;
+    }
 
     if (quoteErr) {
       throw new Error(quoteErr.message || "Failed to persist quotation header");

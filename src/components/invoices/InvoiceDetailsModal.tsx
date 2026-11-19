@@ -172,7 +172,7 @@ export function InvoiceDetailsModal({
             <h2 className="text-base font-bold tracking-tight">
               <span className="text-[#002664]">LATIFAL STAR</span>
               {" "}
-              <span className="text-[#0052CC]">TECHNICAL SERVICES</span>
+              <span className="text-[#0052CC]">TECHNICAL SERVICES L.L.C</span>
             </h2>
             
           </div>
@@ -369,6 +369,12 @@ export function InvoiceDetailsModal({
         <pre className="text-[11px] text-slate-600 leading-relaxed font-sans whitespace-pre-line bg-slate-50 p-3 rounded border border-slate-200">
           {invoice.termsAndConditions}
         </pre>
+      </div>
+
+      {/* Sign-off Block (Invoice: no name and number) */}
+      <div className="pt-4 border-t border-slate-200">
+        <p className="text-xs text-slate-500">Thanks and Regards,</p>
+        <p className="text-xs font-bold text-[#002664]">LATIFAL STAR TECHNICAL SERVICES L.L.C</p>
       </div>
 
     </DocumentViewer>

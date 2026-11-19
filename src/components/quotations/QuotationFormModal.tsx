@@ -26,7 +26,7 @@ import {
 } from "@/lib/quotations/calculations";
 import type { Customer } from "@/lib/data/customers-mock";
 import type { Quotation, QuotationStatus } from "@/lib/data/quotations-mock";
-import { Building2, Calendar, FileText, Save, CheckCircle, Receipt, ClipboardList } from "lucide-react";
+import { Building2, Calendar, FileText, Save, CheckCircle, Receipt, ClipboardList, UserCheck } from "lucide-react";
 
 export function QuotationFormModal({
   open,
@@ -63,6 +63,8 @@ export function QuotationFormModal({
     projectLocation: "",
     notes: "",
     termsAndConditions: DEFAULT_QUOTATION_TERMS,
+    signoffContactName: "Muthu",
+    signoffContactPhone: "0561574740",
     status: "DRAFT" as QuotationStatus,
     overallDiscount: 0,
   });
@@ -95,6 +97,8 @@ export function QuotationFormModal({
         projectLocation: quotationToEdit.projectLocation,
         notes: quotationToEdit.notes || "",
         termsAndConditions: quotationToEdit.termsAndConditions || DEFAULT_QUOTATION_TERMS,
+        signoffContactName: quotationToEdit.signoffContactName || "Muthu",
+        signoffContactPhone: quotationToEdit.signoffContactPhone || "0561574740",
         status: quotationToEdit.status,
         overallDiscount: 0,
       });
@@ -117,6 +121,8 @@ export function QuotationFormModal({
         projectLocation: defaultCust ? `${defaultCust.city}, UAE` : "Dubai, UAE",
         notes: "",
         termsAndConditions: DEFAULT_QUOTATION_TERMS,
+        signoffContactName: "Muthu",
+        signoffContactPhone: "0561574740",
         status: "DRAFT",
         overallDiscount: 0,
       });
@@ -226,6 +232,8 @@ export function QuotationFormModal({
         grandTotal: totals.grandTotal,
         notes: formData.notes.trim() || undefined,
         termsAndConditions: formData.termsAndConditions.trim() || DEFAULT_QUOTATION_TERMS,
+        signoffContactName: formData.signoffContactName.trim() || "Muthu",
+        signoffContactPhone: formData.signoffContactPhone.trim() || "0561574740",
         status: formData.status,
         createdAt: quotationToEdit ? quotationToEdit.createdAt : now,
         updatedAt: now,
@@ -400,6 +408,30 @@ export function QuotationFormModal({
                   value={formData.notes}
                   onChange={(e) =>
                     setFormData({ ...formData, notes: e.target.value })
+                  }
+                />
+              </div>
+            </WorkspaceSection>
+
+            <WorkspaceSection title="Sign-Off & Authorized Contact (Thanks and Regards)" icon={UserCheck}>
+              <p className="text-xs text-slate-500 mb-3">
+                Specify the person name and mobile number displayed in the quotation sign-off block below Thanks and Regards.
+              </p>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <Input
+                  label="Contact Person Name"
+                  placeholder="e.g. Muthu"
+                  value={formData.signoffContactName}
+                  onChange={(e) =>
+                    setFormData({ ...formData, signoffContactName: e.target.value })
+                  }
+                />
+                <Input
+                  label="Mobile / Phone Number"
+                  placeholder="e.g. 0561574740"
+                  value={formData.signoffContactPhone}
+                  onChange={(e) =>
+                    setFormData({ ...formData, signoffContactPhone: e.target.value })
                   }
                 />
               </div>

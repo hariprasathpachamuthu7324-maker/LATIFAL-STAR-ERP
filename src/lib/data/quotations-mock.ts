@@ -29,6 +29,8 @@ export interface Quotation {
   grandTotal: number;
   notes?: string;
   termsAndConditions: string;
+  signoffContactName?: string;
+  signoffContactPhone?: string;
   status: QuotationStatus;
   createdAt: string;
   updatedAt: string;

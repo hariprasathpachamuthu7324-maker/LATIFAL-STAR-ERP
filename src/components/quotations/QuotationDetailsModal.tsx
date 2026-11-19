@@ -307,6 +307,16 @@ export function QuotationDetailsModal({
         </div>
       </div>
 
+      {/* Sign-off Block */}
+      <div className="pt-4 border-t border-slate-200 flex justify-between items-end">
+        <div className="space-y-1">
+          <p className="text-xs text-slate-500">Thanks and Regards,</p>
+          <p className="text-xs font-bold text-[#002664]">LATIFAL STAR TECHNICAL SERVICES L.L.C</p>
+          <p className="text-xs text-slate-800 font-medium">{quotation.signoffContactName || "Muthu"}</p>
+          <p className="text-xs text-slate-600 font-numeric">{quotation.signoffContactPhone || "0561574740"}</p>
+        </div>
+      </div>
+
     </DocumentViewer>
     </>
   );

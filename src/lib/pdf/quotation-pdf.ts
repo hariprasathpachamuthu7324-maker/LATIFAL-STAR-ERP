@@ -230,12 +230,23 @@ export function generateQuotationPDF(
   doc.text(comp.name, startX, currentY);
   currentY += 4.5;
 
+  const signoffPerson = (quotation.signoffContactName !== undefined && quotation.signoffContactName !== null && quotation.signoffContactName.trim() !== "")
+    ? quotation.signoffContactName.trim()
+    : (comp.contactPerson || "Muthu");
+  const signoffPhone = (quotation.signoffContactPhone !== undefined && quotation.signoffContactPhone !== null && quotation.signoffContactPhone.trim() !== "")
+    ? quotation.signoffContactPhone.trim()
+    : (comp.contactPhone || comp.phone || "0561574740");
+
   doc.setFont("helvetica", "normal");
   doc.setFontSize(8.5);
   doc.setTextColor(...PDF_COLORS.textDark);
-  doc.text(comp.contactPerson || "Muthu", startX, currentY);
-  currentY += 4.5;
-  doc.text(comp.phone || "0561574740", startX, currentY);
+  if (signoffPerson) {
+    doc.text(signoffPerson, startX, currentY);
+    currentY += 4.5;
+  }
+  if (signoffPhone) {
+    doc.text(signoffPhone, startX, currentY);
+  }
 
   // 9. Footer
   renderOfficialFooter(doc, companyOverride);
