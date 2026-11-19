@@ -28,6 +28,8 @@ export const PDF_COMPANY_DETAILS = {
   tagline: "Commercial Electro-Mechanical & Technical Services",
   address: "Deira, Port Saeed, Dubai – United Arab Emirates",
   phone: "+971561574740",
+  contactPerson: "Muthu",
+  contactPhone: "0561574740",
   email: "info@latifalstar.com",
   trn: "100234567800003",
   bankName: "Emirates NBD",

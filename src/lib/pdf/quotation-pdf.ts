@@ -11,6 +11,7 @@ import {
   renderFinancialTotalsBlock,
   renderOfficialFooter,
 } from "./pdf-primitives";
+import { COMPANY_STAMP_BASE64 } from "./stamp-base64";
 
 export function generateQuotationPDF(
   quotation: Quotation,
@@ -132,54 +133,118 @@ export function generateQuotationPDF(
     grandTotal:   quotation.grandTotal,
   }, false);
 
-  // 6. Terms & Conditions
-  if (currentY + 40 > doc.internal.pageSize.getHeight() - 15) {
+  // 6. Payment Terms & Commercial Conditions (Matches official company quotation template)
+  const requiredTermsHeight = 85;
+  if (currentY + requiredTermsHeight > doc.internal.pageSize.getHeight() - 15) {
     doc.addPage();
     currentY = 16;
   }
 
+  // Payment terms
   doc.setFont("helvetica", "bold");
-  doc.setFontSize(8);
-  doc.setTextColor(...PDF_COLORS.primaryNavy);
-  doc.text("TERMS & CONDITIONS", startX, currentY + 2);
+  doc.setFontSize(8.5);
+  doc.setTextColor(...PDF_COLORS.textDark);
+  doc.text("Payment terms:", startX, currentY);
+  currentY += 4.5;
 
   doc.setFont("helvetica", "normal");
-  doc.setFontSize(7.5);
-  doc.setTextColor(...PDF_COLORS.textDark);
+  doc.setFontSize(8);
+  doc.text("60% cash Advance.", startX, currentY);
+  currentY += 4.2;
+  doc.text("40% cash After Completion of works.", startX, currentY);
+  currentY += 6.5;
 
-  const rawTerms =
-    quotation.termsAndConditions ||
-    "Payment Terms: 60% cash Advance, 40% cash After Completion of works\nQuote Validity: 20 days\nCommencement of Work: Cash / LPO";
-
-  const termsLines = rawTerms.split("\n").filter(Boolean);
-  let termY = currentY + 7;
-  for (const line of termsLines) {
-    doc.text(`\u2022 ${line.replace(/^[\u2022\-]\s*/, "")}`, startX, termY);
-    termY += 4.5;
-  }
-  currentY = termY + 2;
-
-  // 7. Exclusions
+  // Validity
   doc.setFont("helvetica", "bold");
   doc.setFontSize(8);
-  doc.setTextColor(...PDF_COLORS.primaryNavy);
-  doc.text("EXCLUSIONS:", startX, currentY);
+  doc.text("Validity: ", startX, currentY);
+  const valLabelW = doc.getTextWidth("Validity: ");
+  doc.setFont("helvetica", "normal");
+  const valText = "Our offer is valid for your acceptance for a period of 20 days from the date quoted and there after subject to our confirmation.";
+  const wrappedVal = doc.splitTextToSize(valText, usableWidth - valLabelW);
+  doc.text(wrappedVal, startX + valLabelW, currentY);
+  currentY += (Array.isArray(wrappedVal) ? wrappedVal.length * 4 : 4) + 2.5;
+
+  // Commencement of work
+  doc.setFont("helvetica", "bold");
+  doc.text("Commencement of work: ", startX, currentY);
+  const commLabelW = doc.getTextWidth("Commencement of work: ");
+  doc.setFont("helvetica", "normal");
+  doc.text("Cash/LPO.", startX + commLabelW, currentY);
+  currentY += 6.5;
+
+  // Note
+  doc.setFont("helvetica", "bold");
+  doc.text("Note; ", startX, currentY);
+  const noteLabelW = doc.getTextWidth("Note; ");
+  doc.setFont("helvetica", "normal");
+  const noteText = 'This quotation is valid for 30 days. After 30 days, the prices may be change. If the prices change, we will send you an additional/new quotation."';
+  const wrappedNote = doc.splitTextToSize(noteText, usableWidth - noteLabelW);
+  doc.text(wrappedNote, startX + noteLabelW, currentY);
+  currentY += (Array.isArray(wrappedNote) ? wrappedNote.length * 4 : 4) + 5;
+
+  // Exclusions
+  doc.setFont("helvetica", "bold");
+  doc.text("Exclusions:", startX, currentY);
+  currentY += 5;
+
+  const exclusions = [
+    "Any works other than the above-mentioned scope are excluded.",
+    "Scaffolding and ladder.",
+    "Work permit, HSE permit, Gate pass, Approvals, NOC, & all other permissions.",
+    "Inspection, approvals, certification, fees, or any local authority and 3rd party requirements.",
+    "Any changes other than the above BOQ."
+  ];
 
   doc.setFont("helvetica", "normal");
-  doc.setFontSize(7.5);
-  doc.setTextColor(...PDF_COLORS.textDark);
-  const excl = doc.splitTextToSize(
-    "Any works, materials or services not specifically mentioned in the above scope are excluded from this quotation.",
-    usableWidth
-  );
-  doc.text(excl, startX, currentY + 4.5);
-  currentY += (Array.isArray(excl) ? excl.length * 4 : 4) + 8;
+  doc.setFontSize(8);
+  exclusions.forEach((item, idx) => {
+    doc.text(`${idx + 1}.`, startX + 6, currentY);
+    const wrappedItem = doc.splitTextToSize(item, usableWidth - 14);
+    doc.text(wrappedItem, startX + 12, currentY);
+    currentY += (Array.isArray(wrappedItem) ? wrappedItem.length * 4 : 4) + 1;
+  });
 
-  // 8. Sign-off + single signature
-  if (currentY + 28 > doc.internal.pageSize.getHeight() - 15) {
+  currentY += 6;
+
+  // 7. Stamp & Signature + Thanks and Regards
+  if (currentY + 45 > doc.internal.pageSize.getHeight() - 15) {
     doc.addPage();
     currentY = 16;
   }
+
+  // Draw Official Stamp & Signature
+  try {
+    if (COMPANY_STAMP_BASE64 && COMPANY_STAMP_BASE64.length > 50) {
+      const stampWidth = 32;
+      const stampHeight = 28;
+      doc.addImage(COMPANY_STAMP_BASE64, "PNG", startX + 6, currentY, stampWidth, stampHeight, undefined, "FAST");
+      currentY += stampHeight + 3;
+    }
+  } catch {
+    currentY += 8;
+  }
+
+  // Sign-off text
+  doc.setFont("helvetica", "normal");
+  doc.setFontSize(8.5);
+  doc.setTextColor(...PDF_COLORS.textDark);
+  doc.text("Thanks and Regards,", startX, currentY);
+  currentY += 5;
+
+  doc.setFont("helvetica", "bold");
+  doc.setFontSize(8.5);
+  doc.setTextColor(...PDF_COLORS.primaryNavy);
+  const comp = { ...PDF_COMPANY_DETAILS, ...companyOverride };
+  doc.text(comp.name, startX, currentY);
+  currentY += 4.5;
+
+  doc.setFont("helvetica", "normal");
+  doc.setFontSize(8.5);
+  doc.setTextColor(...PDF_COLORS.textDark);
+  doc.text(comp.contactPerson || "Muthu", startX, currentY);
+  currentY += 4.5;
+  doc.text(comp.phone || "0561574740", startX, currentY);
 
   // 9. Footer
   renderOfficialFooter(doc, companyOverride);
