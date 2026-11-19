@@ -22,9 +22,9 @@ export const PDF_COLORS = {
 };
 
 export const PDF_COMPANY_DETAILS = {
-  name: "LATIFAL STAR TECHNICAL SERVICES",
+  name: "LATIFAL STAR TECHNICAL SERVICES L.L.C",
   nameFirst: "LATIFAL STAR",                                     // primary part
-  nameRest: "TECHNICAL SERVICES",                                // secondary part
+  nameRest: "TECHNICAL SERVICES L.L.C",                           // secondary part
   tagline: "Commercial Electro-Mechanical & Technical Services",
   address: "Deira, Port Saeed, Dubai – United Arab Emirates",
   phone: "+971561574740",
@@ -33,7 +33,7 @@ export const PDF_COMPANY_DETAILS = {
   email: "info@latifalstar.com",
   trn: "100234567800003",
   bankName: "Emirates NBD",
-  accountName: "LATIFAL STAR TECHNICAL SERVICES",
+  accountName: "LATIFAL STAR TECHNICAL SERVICES L.L.C",
   iban: "AE070260001012345678901",
   swift: "EBILAEADXXX",
 };
@@ -258,10 +258,10 @@ export function renderCleanMetadataBlock(
       overflow: "linebreak",
     },
     columnStyles: {
-      0: { cellWidth: 20, fontStyle: "bold", textColor: PDF_COLORS.primaryNavy },
-      1: { cellWidth: 70, fontStyle: "normal", textColor: PDF_COLORS.textDark },
-      2: { cellWidth: 20, fontStyle: "bold", textColor: PDF_COLORS.primaryNavy },
-      3: { cellWidth: 72, fontStyle: "normal", textColor: PDF_COLORS.textDark },
+      0: { cellWidth: 26, fontStyle: "bold", textColor: PDF_COLORS.primaryNavy },
+      1: { cellWidth: 65, fontStyle: "normal", textColor: PDF_COLORS.textDark },
+      2: { cellWidth: 26, fontStyle: "bold", textColor: PDF_COLORS.primaryNavy },
+      3: { cellWidth: 65, fontStyle: "normal", textColor: PDF_COLORS.textDark },
     },
     tableWidth: 182,
     margin: { left: 14, right: 14 },

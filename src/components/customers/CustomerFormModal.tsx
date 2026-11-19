@@ -160,7 +160,7 @@ export function CustomerFormModal({
     <EnterpriseWorkspace open={open} onClose={() => onOpenChange(false)}>
       <WorkspaceHeader
         title={isEditing ? "Edit Customer" : "Register New Customer"}
-        subtitle="LATIFAL STAR TECHNICAL SERVICES • Client Database"
+        subtitle="LATIFAL STAR TECHNICAL SERVICES L.L.C • Client Database"
         documentNumber={customerToEdit?.customerCode}
         onClose={() => onOpenChange(false)}
         actions={

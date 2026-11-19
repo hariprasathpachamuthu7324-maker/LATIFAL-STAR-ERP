@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "LATIFAL STAR TECHNICAL SERVICES | Business Portal",
+  title: "LATIFAL STAR TECHNICAL SERVICES L.L.C | Business Portal",
   description: "Enterprise Technical Services Business Management Platform (Dubai - UAE)",
 };
 

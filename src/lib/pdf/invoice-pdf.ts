@@ -6,7 +6,7 @@ import {
   PDF_COLORS,
   PDF_COMPANY_DETAILS,
   renderOfficialHeader,
-  renderMetadataTable,
+  renderCleanMetadataBlock,
   renderFinancialTotalsBlock,
   renderBankRemittanceDetails,
   renderOfficialFooter,
@@ -20,26 +20,28 @@ export function generateInvoicePDF(
   const pageWidth  = doc.internal.pageSize.getWidth();
   const startX     = 14;
   const usableWidth = pageWidth - 28;
+  const comp = { ...PDF_COMPANY_DETAILS, ...companyOverride };
 
   // 1. Full header with address/TRN (invoice style)
   let currentY = renderOfficialHeader(doc, "TAX INVOICE", invoice.invoiceNumber, companyOverride, true);
 
-  // 2. Metadata — 5 rows each side
-  currentY = renderMetadataTable(
+  // 2. Clean Borderless Metadata (No box structure) — includes both Customer TRN & Company TRN
+  currentY = renderCleanMetadataBlock(
     doc,
     currentY,
     [
       { label: "Customer",       value: invoice.clientPrintedName || invoice.customerName },
-      { label: "Contact",        value: invoice.attention || "" },
-      { label: "Project",        value: invoice.projectName || "" },
+      { label: "Contact",        value: invoice.attention || "-" },
+      { label: "Project",        value: invoice.projectName || "-" },
       { label: "Site / Location",value: invoice.projectLocation || "Dubai, UAE" },
-      { label: "Company TRN",    value: invoice.customerTrn || "N/A" },
+      { label: "Customer TRN",   value: invoice.customerTrn || "N/A" },
     ],
     [
       { label: "Invoice No.",     value: invoice.invoiceNumber },
       { label: "Invoice Date",    value: formatDate(invoice.invoiceDate) },
       { label: "Due Date",        value: formatDate(invoice.dueDate) },
       { label: "Quote Ref.",      value: invoice.quotationNumber || "N/A" },
+      { label: "Company TRN",     value: comp.trn || "100234567800003" },
       { label: "Payment Status",  value: invoice.paymentStatus || "UNPAID" },
     ]
   );

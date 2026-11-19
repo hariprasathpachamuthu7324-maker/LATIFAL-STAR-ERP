@@ -54,7 +54,7 @@ export interface AppSettings {
 
 export const DEFAULT_APP_SETTINGS: AppSettings = {
   company: {
-    legalName: "LATIFAL STAR TECHNICAL SERVICES",
+    legalName: "LATIFAL STAR TECHNICAL SERVICES L.L.C",
     tradeLicenseNumber: "1251018",
     establishedYear: "2023",
     address: "Deira, Port Saeed, Dubai",
@@ -73,7 +73,7 @@ export const DEFAULT_APP_SETTINGS: AppSettings = {
   banking: {
     bankName: "Emirates NBD",
     bankBranch: "Deira Branch, Dubai",
-    accountName: "LATIFAL STAR TECHNICAL SERVICES",
+    accountName: "LATIFAL STAR TECHNICAL SERVICES L.L.C",
     accountNumber: "1012345678901",
     iban: "AE070260001012345678901",
     swiftCode: "EBILAEADXXX",

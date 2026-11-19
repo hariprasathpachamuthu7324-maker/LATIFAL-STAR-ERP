@@ -109,13 +109,13 @@ export function calculateInvoiceFinancials(
 }
 
 export const DEFAULT_INVOICE_TERMS = `1. Payment is due strictly in accordance with agreed credit terms stated on this Tax Invoice.
-2. Direct Bank Transfers should be remitted to the LATIFAL STAR TECHNICAL SERVICES designated bank account.
+2. Direct Bank Transfers should be remitted to the LATIFAL STAR TECHNICAL SERVICES L.L.C designated bank account.
 3. Please reference the Invoice Number (LSTS-INV-XXXX-XXX) on all payment advice and remittance notifications.
 4. Any discrepancy or technical query regarding this invoice must be communicated in writing within 7 calendar days of receipt.
 5. All technical works are certified under LATIFAL STAR standard warranty terms upon settlement of final outstanding balance.`;
 
 export const LATIFAL_STAR_COMPANY_DETAILS = {
-  legalName: "LATIFAL STAR TECHNICAL SERVICES",
+  legalName: "LATIFAL STAR TECHNICAL SERVICES L.L.C",
   address: "Deira, Port Saeed, Dubai",
   city: "Dubai",
   country: "United Arab Emirates",
@@ -124,7 +124,7 @@ export const LATIFAL_STAR_COMPANY_DETAILS = {
   trn: "100234567800003", // UAE 15-digit FTA TRN
   bankName: "Emirates NBD Bank PJSC",
   bankBranch: "Deira Branch, Dubai",
-  accountName: "LATIFAL STAR TECHNICAL SERVICES",
+  accountName: "LATIFAL STAR TECHNICAL SERVICES L.L.C",
   accountNumber: "1012345678901",
   iban: "AE070260001012345678901",
   swiftCode: "EBILAEADXXX",

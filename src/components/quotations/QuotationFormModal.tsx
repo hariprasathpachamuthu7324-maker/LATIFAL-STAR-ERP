@@ -249,7 +249,7 @@ export function QuotationFormModal({
     <EnterpriseWorkspace open={open} onClose={() => onOpenChange(false)}>
       <WorkspaceHeader
         title={isEditing ? "Edit Quotation" : "Create Quotation"}
-        subtitle="LATIFAL STAR TECHNICAL SERVICES • Commercial Proposal Builder"
+        subtitle="LATIFAL STAR TECHNICAL SERVICES L.L.C • Commercial Proposal Builder"
         documentNumber={formData.quotationNumber}
         onClose={() => onOpenChange(false)}
         actions={

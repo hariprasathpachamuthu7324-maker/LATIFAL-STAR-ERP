@@ -60,12 +60,12 @@ export function WorkspaceHeader({
           </div>
           {subtitle && (
             <p className="text-[10px] sm:text-xs font-medium truncate mt-0.5 uppercase tracking-wider">
-              {typeof subtitle === 'string' && (subtitle.startsWith("LATIFAL STAR TECHNICAL SERVICES") || subtitle.startsWith("LATIFAL STAR TECHNICAL SERVICES")) ? (
+              {typeof subtitle === 'string' && (subtitle.startsWith("LATIFAL STAR TECHNICAL SERVICES L.L.C") || subtitle.startsWith("LATIFAL STAR TECHNICAL SERVICES")) ? (
                 <>
                   <span className="text-[#3B82F6]">LATIFAL STAR</span>
                   {" "}
-                  <span className="text-[#60A5FA]">TECHNICAL SERVICES</span>
-                  <span className="text-slate-400">{subtitle.replace("LATIFAL STAR TECHNICAL SERVICES", "")}</span>
+                  <span className="text-[#60A5FA]">TECHNICAL SERVICES L.L.C</span>
+                  <span className="text-slate-400">{subtitle.replace(/^LATIFAL STAR TECHNICAL SERVICES( L\.L\.C)?/, "")}</span>
                 </>
               ) : (
                 <span className="text-slate-400">{subtitle}</span>

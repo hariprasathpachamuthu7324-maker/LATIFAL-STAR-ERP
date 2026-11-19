@@ -332,7 +332,7 @@ export function PurchaseOrderFormModal({
     <EnterpriseWorkspace open={open} onClose={() => onOpenChange(false)}>
       <WorkspaceHeader
         title={isEditing ? "Edit Purchase Order" : "Create Purchase Order"}
-        subtitle="LATIFAL STAR TECHNICAL SERVICES • Materials & Services Procurement"
+        subtitle="LATIFAL STAR TECHNICAL SERVICES L.L.C • Materials & Services Procurement"
         documentNumber={formData.purchaseOrderNumber}
         onClose={() => onOpenChange(false)}
         actions={
