@@ -221,6 +221,55 @@ export function renderMetadataTable(
 }
 
 /**
+ * 2b. CLEAN METADATA BLOCK (No box-like structure)
+ * Two-column clean text layout with aligned colons: Label : Value
+ */
+export function renderCleanMetadataBlock(
+  doc: jsPDF,
+  startY: number,
+  leftPairs: MetadataPair[],
+  rightPairs: MetadataPair[]
+): number {
+  const maxRows = Math.max(leftPairs.length, rightPairs.length);
+  const bodyRows: string[][] = [];
+
+  for (let i = 0; i < maxRows; i++) {
+    const left = leftPairs[i];
+    const right = rightPairs[i];
+    bodyRows.push([
+      left ? left.label : "",
+      left ? `:  ${left.value}` : "",
+      right ? right.label : "",
+      right ? `:  ${right.value}` : "",
+    ]);
+  }
+
+  autoTable(doc, {
+    startY,
+    body: bodyRows,
+    theme: "plain",
+    styles: {
+      fontSize: 8.5,
+      cellPadding: { top: 1.3, bottom: 1.3, left: 0, right: 1 },
+      lineColor: [255, 255, 255],
+      lineWidth: 0,
+      overflow: "linebreak",
+    },
+    columnStyles: {
+      0: { cellWidth: 20, fontStyle: "bold", textColor: PDF_COLORS.primaryNavy },
+      1: { cellWidth: 70, fontStyle: "normal", textColor: PDF_COLORS.textDark },
+      2: { cellWidth: 20, fontStyle: "bold", textColor: PDF_COLORS.primaryNavy },
+      3: { cellWidth: 72, fontStyle: "normal", textColor: PDF_COLORS.textDark },
+    },
+    tableWidth: 182,
+    margin: { left: 14, right: 14 },
+  });
+
+  const lastTable = (doc as any).lastAutoTable;
+  return lastTable ? lastTable.finalY + 4 : startY + 24;
+}
+
+/**
  * 3. FINANCIAL TOTALS BLOCK
  * Right-aligned summary table + Amount in Words box
  */

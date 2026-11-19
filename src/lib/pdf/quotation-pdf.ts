@@ -7,6 +7,7 @@ import {
   PDF_COMPANY_DETAILS,
   renderOfficialHeader,
   renderMetadataTable,
+  renderCleanMetadataBlock,
   renderFinancialTotalsBlock,
   renderOfficialFooter,
 } from "./pdf-primitives";
@@ -23,8 +24,8 @@ export function generateQuotationPDF(
   // 1. Header (no address lines)
   let currentY = renderOfficialHeader(doc, "QUOTATION", quotation.quotationNumber, companyOverride, false);
 
-  // 2. Metadata Table
-  currentY = renderMetadataTable(
+  // 2. Clean Borderless Metadata (No box structure)
+  currentY = renderCleanMetadataBlock(
     doc,
     currentY,
     [
@@ -39,25 +40,40 @@ export function generateQuotationPDF(
       { label: "Ref. No.", value: quotation.quotationNumber },
       { label: "Date",     value: formatDate(quotation.quotationDate) },
       { label: "Project",  value: quotation.projectName || "Technical Services" },
-      { label: "Subject",  value: quotation.subject || "Scope of Works" },
     ]
   );
 
-  // 3. Salutation
+  // 3. Subject as a prominent separate line before Dear Sir
+  const subjectValue = quotation.subject || quotation.projectName || "Scope of Works";
   doc.setFont("helvetica", "bold");
-  doc.setFontSize(8);
+  doc.setFontSize(9);
   doc.setTextColor(...PDF_COLORS.primaryNavy);
-  doc.text("Dear Sir,", startX, currentY + 3);
+  doc.text("Subject :", startX, currentY);
 
+  doc.setFont("helvetica", "bold");
+  doc.setTextColor(...PDF_COLORS.brandOrange);
+  const wrappedSubject = doc.splitTextToSize(subjectValue, usableWidth - 18);
+  doc.text(wrappedSubject, startX + 16, currentY);
+
+  const subjectLines = Array.isArray(wrappedSubject) ? wrappedSubject.length : 1;
+  currentY += (subjectLines * 4.5) + 3;
+
+  // 4. Salutation
+  doc.setFont("helvetica", "bold");
+  doc.setFontSize(8.5);
+  doc.setTextColor(...PDF_COLORS.primaryNavy);
+  doc.text("Dear Sir,", startX, currentY);
+
+  currentY += 4.5;
   doc.setFont("helvetica", "normal");
   doc.setFontSize(8);
   doc.setTextColor(...PDF_COLORS.textDark);
   doc.text(
     "We are pleased to submit our quotation for the below mentioned scope of work.",
     startX,
-    currentY + 8
+    currentY
   );
-  currentY += 12;
+  currentY += 6;
 
   // 4. Line Items Table
   const tableRows = quotation.items.map((item, i) => [
