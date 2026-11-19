@@ -11,7 +11,6 @@ import {
   renderFinancialTotalsBlock,
   renderOfficialFooter,
 } from "./pdf-primitives";
-import { COMPANY_STAMP_BASE64 } from "./stamp-base64";
 
 export function generateQuotationPDF(
   quotation: Quotation,
@@ -207,22 +206,10 @@ export function generateQuotationPDF(
 
   currentY += 6;
 
-  // 7. Stamp & Signature + Thanks and Regards
-  if (currentY + 45 > doc.internal.pageSize.getHeight() - 15) {
+  // 7. Thanks and Regards (Sign-off)
+  if (currentY + 28 > doc.internal.pageSize.getHeight() - 15) {
     doc.addPage();
     currentY = 16;
-  }
-
-  // Draw Official Stamp & Signature
-  try {
-    if (COMPANY_STAMP_BASE64 && COMPANY_STAMP_BASE64.length > 50) {
-      const stampWidth = 32;
-      const stampHeight = 28;
-      doc.addImage(COMPANY_STAMP_BASE64, "PNG", startX + 6, currentY, stampWidth, stampHeight, undefined, "FAST");
-      currentY += stampHeight + 3;
-    }
-  } catch {
-    currentY += 8;
   }
 
   // Sign-off text
