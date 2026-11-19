@@ -99,19 +99,19 @@ export function Sidebar({ className }: { className?: string }) {
       )}
 
       {/* Navigation Groups */}
-      <div className="flex-1 overflow-y-auto py-3 px-2 space-y-1">
+      <div className="flex-1 overflow-y-auto py-3 px-2 space-y-2">
         {navGroups.map((group, groupIdx) => (
-          <div key={group.group}>
+          <div key={group.group} className="w-full">
             {/* Group label (expanded) or thin divider (collapsed, skip first) */}
             {!isCollapsed ? (
               <h4 className="px-3 pt-3 pb-1 text-[10px] font-bold text-slate-400 uppercase tracking-wider">
                 {group.group}
               </h4>
             ) : (
-              groupIdx > 0 && <div className="h-px bg-[#003080]/60 mx-3 my-2" />
+              groupIdx > 0 && <div className="h-px bg-[#003080]/60 mx-2 my-2" />
             )}
 
-            <nav className="space-y-0.5">
+            <nav className="flex flex-col space-y-1 w-full">
               {group.items.map((item) => {
                 const Icon = item.icon;
                 const isActive =
@@ -122,16 +122,19 @@ export function Sidebar({ className }: { className?: string }) {
                     key={item.href}
                     href={item.href}
                     className={cn(
-                      "flex items-center gap-3 px-3 py-2 rounded-lg text-xs font-medium transition-all duration-150 group relative focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-400",
+                      "flex items-center gap-3 px-3 py-2 rounded-lg text-xs font-medium transition-all duration-150 group relative focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 w-full",
                       isActive
                         ? "bg-[#003387] text-white font-semibold shadow-xs"
                         : "text-slate-300 hover:text-white hover:bg-[#002664]/60",
-                      isCollapsed && "justify-center px-0 py-2.5 w-full"
+                      isCollapsed && "justify-center px-0 py-2.5 h-10 w-10 mx-auto"
                     )}
                   >
                     {/* Active Left Indicator */}
                     {isActive && (
-                      <span className="absolute left-0 top-2 bottom-2 w-[3px] bg-[#60A5FA] rounded-r-full" />
+                      <span className={cn(
+                        "absolute left-0 top-2 bottom-2 w-[3px] bg-[#60A5FA] rounded-r-full",
+                        isCollapsed && "left-0 top-1.5 bottom-1.5"
+                      )} />
                     )}
 
                     <Icon
@@ -161,6 +164,7 @@ export function Sidebar({ className }: { className?: string }) {
                       key={item.href}
                       content={item.title}
                       position="right"
+                      wrapperClassName="w-full justify-center"
                     >
                       {navLink}
                     </Tooltip>

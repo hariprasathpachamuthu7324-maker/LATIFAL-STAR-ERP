@@ -6,6 +6,7 @@ export interface TooltipProps {
   children: React.ReactNode;
   position?: "top" | "bottom" | "left" | "right";
   className?: string;
+  wrapperClassName?: string;
 }
 
 export function Tooltip({
@@ -13,6 +14,7 @@ export function Tooltip({
   children,
   position = "top",
   className,
+  wrapperClassName,
 }: TooltipProps) {
   const [isVisible, setIsVisible] = React.useState(false);
 
@@ -20,12 +22,12 @@ export function Tooltip({
     top: "bottom-full left-1/2 -translate-x-1/2 mb-1.5",
     bottom: "top-full left-1/2 -translate-x-1/2 mt-1.5",
     left: "right-full top-1/2 -translate-y-1/2 mr-1.5",
-    right: "left-full top-1/2 -translate-y-1/2 ml-1.5",
+    right: "left-full top-1/2 -translate-y-1/2 ml-2",
   };
 
   return (
     <div
-      className="relative inline-flex"
+      className={cn("relative flex w-full justify-center", wrapperClassName)}
       onMouseEnter={() => setIsVisible(true)}
       onMouseLeave={() => setIsVisible(false)}
       onFocus={() => setIsVisible(true)}
@@ -36,7 +38,7 @@ export function Tooltip({
         <div
           role="tooltip"
           className={cn(
-            "absolute z-50 px-2 py-1 text-[11px] font-medium text-white bg-[#002664] rounded shadow-md pointer-events-none whitespace-nowrap animate-in fade-in-50 duration-150",
+            "absolute z-50 px-2.5 py-1 text-[11px] font-semibold text-white bg-[#001D4D] border border-[#003080] rounded shadow-lg pointer-events-none whitespace-nowrap animate-in fade-in-50 duration-150",
             positionStyles[position],
             className
           )}
